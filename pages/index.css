@@ -1,0 +1,11 @@
+/* обнуляющие стили (NORMALIZE)*/
+
+@import url(../vendor/normalize.css);
+
+/* шрифты FONTS */
+
+@import url(../vendor/fonts/fonts.css);
+
+/* обертка главной страницы (ROOT) */
+
+@import url(../blocks/root/root.css);
