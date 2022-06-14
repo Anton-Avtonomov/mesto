@@ -6,6 +6,29 @@
 
 @import url(../vendor/fonts/fonts.css);
 
+/* BODY */
+
+@import url(../blocks/body/body.css);
+
 /* обертка главной страницы (ROOT) */
 
 @import url(../blocks/root/root.css);
+
+/* JAVA SCRIPT */
+@import url(../script/script.js);
+
+/* block HEADER*/
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__line/header__line.css);
+
+/* block PROFILE*/
+@import url(../blocks//profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+
+/* block ELEMENTS*/
+@import url(../blocks/elements/elements.css);
+
+/* element INPUT*/
+@import url(../blocks/input/input.css);

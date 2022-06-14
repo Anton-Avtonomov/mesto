@@ -1,4 +1,4 @@
-/*@font-face {
+@font-face {
     font-family: "Inter";
     src: url(..//fonts/Inter/Inter-Regular.woff) format("woff"), url(..//fonts/Inter/Inter-Regular.woff2) format("woff2");
     font-style: normal;
@@ -20,4 +20,4 @@
     font-style: normal;
     font-weight: 700;
     font-display: wrap;
-}*/
+}
