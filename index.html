@@ -2,75 +2,92 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Anton Avtonomov">
-  <meta name="description" content="Страница содержит ...">
-  <meta name="keywords" content="Anton Avtonomov, ...">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anton Avtonomov">
+    <meta name="description" content="Страница содержит ...">
+    <meta name="keywords" content="Anton Avtonomov, ...">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
 </head>
 
 <body class="body">
 
-  <div class="root">
+    <div class="root">
 
-    <header class="header">
-      <img src="./image/header/logo-mesto.svg" alt="Изображение логотипа Mesto-Russia" class="header__image">
-      <div class="header__line"></div>
-    </header>
+        <header class="header">
+            <img src="./image/header/logo-mesto.svg" alt="Изображение логотипа Mesto-Russia" class="header__image">
+            <div class="header__line"></div>
+        </header>
 
-    <main class="main">
-      <form class="profile">
-        <img src="./image/profile/avatar-jacques.jpg" alt="Фотография Жак-Ив Кусто" class="profile__avatar">
-        <div class="profile__info">
-          <input class="input profile__name" type="text" value="Жак-Ив Кусто">
-          <input class="input profile__profession" type="text" value="Исследователь океана">
-        </div>
-        <button class="profile__add-button"><img class="profile__img-addition" src="./image/profile/add-button.svg" alt="Изображение символа плюс"></button>
-      </form>
+        <main class="main">
+            <form class="profile">
+                <img src="./image/profile/avatar-jacques.jpg" alt="Фотография Жак-Ив Кусто" class="profile__avatar">
+                <div class="profile__info">
+                    <input class="input profile__name" type="text" value="Жак-Ив Кусто">
+                    <button type="button" class="profile__edit-button"><img src="./image/profile/pen.svg" alt="Изображение ручки"></button>
+                    <input class="input profile__profession" type="text" value="Исследователь океана">
+                </div>
+                <button class="profile__add-button" type="submit"><img class="profile__img-addition" src="./image/profile/add-button.svg" alt="Изображение символа плюс"></button>
+            </form>
 
-      <section class="elements">
-        <div class="element">
-          <img src="./image/elements/Karachaevsk.png" alt="Изображение храма в горах из города Карачаевск"
-            class="element__image">
-          <p class="element__heading">Карачаевск</p>
-        </div>
+            <section class="elements">
+                <div class="element">
+                    <img class="element__image" src="./image/elements/Karachaevsk.png" alt="Изображение храма в горах из города Карачаевск">
+                    <div class="element__heading">
+                        <h4 class="element__title">Карачаевск</h4>
+                        <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
+                    </div>
+                </div>
 
-        <div class="element">
-          <img src="./image/elements/elbrus.png" alt="Изображение горы эльбрус на закате" class="element__image">
-          <p class="element__heading">Гора Эльбрус</p>
-        </div>
+                <div class="element">
+                    <img class="element__image" src="./image/elements/elbrus.png" alt="Изображение горы эльбрус на закате">
+                    <div class="element__heading">
+                        <h4 class="element__title">Гора Эльбрус</h4>
+                        <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
+                    </div>
+                </div>
 
-        <div class="element">
-          <img src="./image/elements/dombay.png" alt="Изображение гор Домбая" class="element__image">
-          <p class="element__heading">Домбай</p>
-        </div>
+                <div class="element">
+                    <img class="element__image" src="./image/elements/dombay.png" alt="Изображение гор Домбая">
+                    <div class="element__heading">
+                        <h4 class="element__title">Домбай</h4>
+                        <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
+                    </div>
+                </div>
 
-        <div class="element">
-          <img src="./image/elements/elbrus.png" alt="Изображение горы эльбрус на закате" class="element__image">
-          <p class="element__heading">Гора Эльбрус</p>
-        </div>
+                <div class="element">
+                    <img class="element__image" src="./image/elements/sheregesh.jpg" alt="Изображение поселка Шерегеш">
+                    <div class="element__heading">
+                        <h4 class="element__title">Шерегеш</h4>
+                        <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
+                    </div>
+                </div>
 
-        <div class="element">
-          <img src="./image/elements/dombay.png" alt="Изображение гор Домбая" class="element__image">
-          <p class="element__heading">Домбай</p>
-        </div>
+                <div class="element">
+                    <img class="element__image" src="./image/elements/red glade.jpg.crdownload" alt="Изображение Красной поляны">
+                    <div class="element__heading">
+                        <h4 class="element__title">Красная Поляна</h4>
+                        <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
+                    </div>
+                </div>
 
-        <divЮ class="element">
-          <img src="./image/elements/Karachaevsk.png" alt="Изображение храма в горах из города Карачаевск"
-            class="element__image">
-          <p class="element__heading">Карачаевск</p>
+                <div class="element">
+                    <img class="element__image" src="./image/elements/stepanovo.jpg.crdownload" alt="Изображение с горнолыжного курорта Степаново">
+                    <div class="element__heading">
+                        <h4 class="element__title">Степаново</h4>
+                        <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2020 Mesto Russia</p>
+        </footer>
+    </div>
 
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">© 2020 Mesto Russia</p>
-    </footer>
-  </div>
-
-  <script src="./script/script.js"></script>
+    <script src="./script/script.js"></script>
 
 </body>
 

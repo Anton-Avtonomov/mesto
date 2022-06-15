@@ -15,20 +15,43 @@
 @import url(../blocks/root/root.css);
 
 /* JAVA SCRIPT */
+
 @import url(../script/script.js);
 
+/* element INPUT*/
+
+@import url(../blocks/input/input.css);
+
 /* block HEADER*/
+
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
 
+/* block MAIN*/
+
+@import url(../blocks/main/main.css);
+
 /* block PROFILE*/
+
 @import url(../blocks//profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
 
 /* block ELEMENTS*/
+
 @import url(../blocks/elements/elements.css);
 
-/* element INPUT*/
-@import url(../blocks/input/input.css);
+/* block ELEMENT*/
+
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__heading/element__heading.css);
+@import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__title/element__title.css);
+
+/* block FOOTER*/
+
+@import url(../blocks/footer/footer.css);
