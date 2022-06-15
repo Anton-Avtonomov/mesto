@@ -9,32 +9,36 @@
     <meta name="description" content="Страница содержит ...">
     <meta name="keywords" content="Anton Avtonomov, ...">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Mesto</title>
+    <title>Mesto Russia</title>
 </head>
 
 <body class="body">
-
     <div class="root">
-
         <header class="header">
             <img src="./image/header/logo-mesto.svg" alt="Изображение логотипа Mesto-Russia" class="header__image">
             <div class="header__line"></div>
         </header>
 
         <main class="main">
-            <form class="profile">
-                <img src="./image/profile/avatar-jacques.jpg" alt="Фотография Жак-Ив Кусто" class="profile__avatar">
-                <div class="profile__info">
-                    <input class="input profile__name" type="text" value="Жак-Ив Кусто">
-                    <button type="button" class="profile__edit-button"><img src="./image/profile/pen.svg" alt="Изображение ручки"></button>
-                    <input class="input profile__profession" type="text" value="Исследователь океана">
-                </div>
-                <button class="profile__add-button" type="submit"><img class="profile__img-addition" src="./image/profile/add-button.svg" alt="Изображение символа плюс"></button>
-            </form>
+            <section class="profile">
+                <img class="profile__avatar" src="./image/profile/avatar-jacques.jpg" alt="Фото Жака-Ив Кусто">
+                <form action="" class="profile__form">
+                    <div class="profile__input-wrapper">
+                        <input class="profile__input profile__input_form_name" type="text" value="Жак-Ив Кусто">
+                        <button class="button__edit">
+                            <img class="logo__pen" src="./image/profile/pen.svg" alt="Изображение ручки">
+                        </button>
+                    </div>
+
+                    <input class="profile__input profile__input_form_job" type="text" value="Исследователь океана">
+                </form>
+                <button class="button__add"><img class="logo__sum" src="./image/profile/add-button.svg" alt=""></button>
+            </section>
 
             <section class="elements">
                 <div class="element">
-                    <img class="element__image" src="./image/elements/Karachaevsk.png" alt="Изображение храма в горах из города Карачаевск">
+                    <img class="element__image" src="./image/elements/Karachaevsk.png"
+                        alt="Изображение храма в горах из города Карачаевск">
                     <div class="element__heading">
                         <h4 class="element__title">Карачаевск</h4>
                         <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
@@ -42,7 +46,8 @@
                 </div>
 
                 <div class="element">
-                    <img class="element__image" src="./image/elements/elbrus.png" alt="Изображение горы эльбрус на закате">
+                    <img class="element__image" src="./image/elements/elbrus.png"
+                        alt="Изображение горы эльбрус на закате">
                     <div class="element__heading">
                         <h4 class="element__title">Гора Эльбрус</h4>
                         <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
@@ -66,7 +71,8 @@
                 </div>
 
                 <div class="element">
-                    <img class="element__image" src="./image/elements/red glade.jpg.crdownload" alt="Изображение Красной поляны">
+                    <img class="element__image" src="./image/elements/red glade.jpg.crdownload"
+                        alt="Изображение Красной поляны">
                     <div class="element__heading">
                         <h4 class="element__title">Красная Поляна</h4>
                         <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
@@ -74,9 +80,10 @@
                 </div>
 
                 <div class="element">
-                    <img class="element__image" src="./image/elements/stepanovo.jpg.crdownload" alt="Изображение с горнолыжного курорта Степаново">
+                    <img class="element__image" src="./image/elements/stepanovo.jpg.crdownload"
+                        alt="Изображение с горнолыжного курорта Степаново">
                     <div class="element__heading">
-                        <h4 class="element__title">Степаново</h4>
+                        <h4 class="element__title">Горнолыжный курорт Степаново</h4>
                         <img src="./image/elements/like.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
@@ -85,6 +92,16 @@
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
+        <section class="popup-wrapper">
+            <div class="popup">
+                <h4 class="popup__heading">Редактировать профиль</h4>
+                <input class="popup__input" type="text" value="Жак-Ив Кусто">
+                <input class="popup__input" type="text" value="Исследователь океана">
+                <button class="popup__button">Сохранить</button>
+                <img src=".//image/closed.svg" alt="" class="logo__closed">
+            </div>
+            
+        </section>
     </div>
 
     <script src="./script/script.js"></script>

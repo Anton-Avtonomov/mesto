@@ -1,11 +1,17 @@
 .main {
-    margin: 0 auto;
-    padding: 0 19px;
+    margin: 40px auto 0 auto;
+    padding: 0;
     max-width: 880px;
+}
+
+@media screen and (min-width: 320px) {
+    .main {
+        margin: 40px 19px 0 19px;
+    }
 }
 
 @media screen and (min-width: 920px) {
     .main {
-        padding: 0;
+        margin: 40px auto 0 auto;
     }
 }

@@ -22,6 +22,17 @@
 
 @import url(../blocks/input/input.css);
 
+/* element BUTTON*/
+@import url(../blocks/button/__add/buttod__add.css);
+@import url(../blocks/button/__edit/buttod__edit.css);
+
+
+/* element LOGO*/
+@import url(../blocks/logo/__pen/logo__pen.css);
+@import url(../blocks/logo/__sum/logo__sum.css);
+
+@import url(../blocks/input/input.css);
+
 /* block HEADER*/
 
 @import url(../blocks/header/header.css);
@@ -34,12 +45,14 @@
 
 /* block PROFILE*/
 
-@import url(../blocks//profile/profile.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__form/profile__form.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
-@import url(../blocks/profile/__info/profile__info.css);
-@import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__name/profile__name.css);
-@import url(../blocks/profile/__profession/profile__profession.css);
+@import url(../blocks/profile/__input-wrapper/profile__input-wrapper.css);
+@import url(../blocks/profile/__input/profile__input.css);
+@import url(../blocks/profile/__input/_form/profile__input_form_name.css);
+@import url(../blocks/profile/__input/_form/profile__input_form_job.css);
+
 
 /* block ELEMENTS*/
 
@@ -55,3 +68,7 @@
 /* block FOOTER*/
 
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* PopUp*/
+@import url(../blocks/popup/popup.css);
