@@ -5,20 +5,22 @@
     z-index: 2;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.7);
     visibility: hidden;
-    /*transform: translateY(-50%) scale(0);*/
 }
 
+.popup__active {
+    visibility: visible;
+}
 
 /*Открытие попАп на чистом CSS
+.popup {
+    transform: translateY(-50%) scale(0);
+    transition: background .8s ease-in-out, transform .5s linear; 
+}
+
 .popup:target {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0%) scale(1);
 }*/
-
-.popup__active {
-    opacity: 1;
-    visibility: visible;
-}
