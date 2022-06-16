@@ -8,6 +8,10 @@
     cursor: pointer;
 }
 
+.button__add:hover {
+    opacity: .6;
+}
+
 @media screen and (min-width: 320px) {
     .button__add {
         margin-top: 36px;

@@ -14,10 +14,6 @@
 
 @import url(../blocks/root/root.css);
 
-/* JAVA SCRIPT */
-
-@import url(../script/script.js);
-
 /* element INPUT*/
 
 @import url(../blocks/input/input.css);
@@ -32,6 +28,7 @@
 @import url(../blocks/logo/__pen/logo__pen.css);
 @import url(../blocks/logo/__sum/logo__sum.css);
 @import url(../blocks/logo/__close/logo__close.css);
+@import url(../blocks/logo/__like/logo__like.css);
 @import url(../blocks/input/input.css);
 
 /* block HEADER*/
@@ -79,3 +76,7 @@
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__input/popup__input.css);
+
+/* JAVA SCRIPT */
+
+@import url(../script/script.js);
