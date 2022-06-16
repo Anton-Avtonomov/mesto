@@ -11,7 +11,14 @@
     /*transform: translateY(-50%) scale(0);*/
 }
 
+
+/*Открытие попАп на чистом CSS
 .popup:target {
+    opacity: 1;
+    visibility: visible;
+}*/
+
+.popup__active {
     opacity: 1;
     visibility: visible;
 }
