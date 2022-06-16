@@ -1,15 +1,12 @@
 .logo__pen {
     width: 10px;
     height: 10px;
-    display: block;
-    margin: auto;
 }
 
 @media screen and (min-width: 320px) {
     .logo__pen {
         width: 7.5px;
         height: 7.5px;
-
     }
 }
 
@@ -17,6 +14,5 @@
     .logo__pen {
         width: 10px;
         height: 10px;
-
     }
 }

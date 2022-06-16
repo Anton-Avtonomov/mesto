@@ -23,14 +23,15 @@
 @import url(../blocks/input/input.css);
 
 /* element BUTTON*/
+
 @import url(../blocks/button/__add/buttod__add.css);
 @import url(../blocks/button/__edit/buttod__edit.css);
 
-
 /* element LOGO*/
+
 @import url(../blocks/logo/__pen/logo__pen.css);
 @import url(../blocks/logo/__sum/logo__sum.css);
-
+@import url(../blocks/logo/__close/logo__close.css);
 @import url(../blocks/input/input.css);
 
 /* block HEADER*/
@@ -53,7 +54,6 @@
 @import url(../blocks/profile/__input/_form/profile__input_form_name.css);
 @import url(../blocks/profile/__input/_form/profile__input_form_job.css);
 
-
 /* block ELEMENTS*/
 
 @import url(../blocks/elements/elements.css);
@@ -71,4 +71,11 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 /* PopUp*/
+
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__button-save/popup__button-save.css);
+@import url(../blocks/popup/__button-close/popup__button-close.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__input/popup__input.css);
