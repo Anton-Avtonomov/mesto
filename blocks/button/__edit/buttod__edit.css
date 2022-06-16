@@ -3,10 +3,14 @@
     border: 1px solid #fff;
     width: 24px;
     height: 24px;
-    margin-left: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    right: -43px;
+    bottom: 0;
+    margin-right: 10px;
+    
 }
 
 .button__edit:hover {
@@ -17,7 +21,8 @@
     .button__edit {
         width: 18px;
         height: 18px;
-        margin-left: 10px;
+        right: -28px;
+        margin-right: 0;
     }
 }
 
@@ -25,6 +30,7 @@
     .button__edit {
         width: 24px;
         height: 24px;
-        margin-left: 18px;
+        right: -43px;
+        margin-right: 10px;
     }
 }
