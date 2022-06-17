@@ -21,16 +21,18 @@
         </header>
 
         <main class="main">
+
             <section class="profile">
                 <img class="profile__avatar" src="./image/profile/avatar-jacques.jpg" alt="Фото Жака-Ив Кусто">
-                <form class="profile__form" action="#">
-                    <div class="profile__input-wrapper">
-                        <input class="profile__input profile__input_form_name" type="text" value="Жак-Ив Кусто" readonly>
-                        <a class="button__edit" href="#popup"><img class="logo__pen" src="./image/profile/pen.svg" alt="Изображение ручки"></a>
-                    </div>
-                    <input class="profile__input profile__input_form_job" type="text" value="Исследователь океана" readonly>
-                </form>
-                <a class="button__add" href="#"><img class="logo__sum" src="./image/profile/add-button.svg" alt="Символ сложения"></a>
+                <div class="profile__form">
+                    <p class="profile__name">Жак-Ив Кусто
+                        <a class="profile__button-edit" href="#popup">
+                            <img class="profile__logo-edit" src="./image/profile/pen.svg" alt="Изображение ручки">
+                        </a>
+                    </p>
+                    <p class="profile__about-him">Исследователь океана</p>
+                </div>
+                <a class="profile__button-add" href="#"><img class="profile__logo-add" src="./image/profile/add-button.svg" alt="Символ сложения"></a>
             </section>
 
             <section class="elements">
@@ -95,7 +97,7 @@
                     <input class="popup__input" type="text" name="name" value="Жак-Ив Кусто" autofocus>
                     <input class="popup__input" type="text" name="job" value="Исследователь океана">
                     <button class="popup__button-save">Сохранить</button>
-                    <a class="popup__button-close" href="#"><img src=".//image/closed.svg" alt="" class="logo__close"></a>
+                    <a class="popup__button-close" href="#"><img src=".//image/closed.svg" alt="" class="popup__logo-close"></a>
                 </form>
             </div>
 

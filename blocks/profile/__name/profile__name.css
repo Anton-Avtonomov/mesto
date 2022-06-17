@@ -1,25 +1,22 @@
-.profile__input_form_name {
+.profile__name {
     font-family: "Inter", "Arial", "Helvetica", sans-serif;
-    width: 294px;
+    margin: 0;
     font-weight: 500;
     font-size: 42px;
     line-height: 48px;
+    position: relative;
 }
 
 @media screen and (min-width: 320px) {
-    .profile__input_form_name {
-        width: 189px;
+    .profile__name {
         font-size: 27px;
         line-height: 33px;
     }
-
 }
 
 @media screen and (min-width: 692px) {
-    .profile__input_form_name {
-        width: 294px;
+    .profile__name {
         font-size: 42px;
         line-height: 48px;
     }
-
 }

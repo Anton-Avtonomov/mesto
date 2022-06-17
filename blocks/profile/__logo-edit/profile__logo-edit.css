@@ -1,17 +1,17 @@
-.logo__pen {
+.profile__logo-edit {
     width: 10px;
     height: 10px;
 }
 
 @media screen and (min-width: 320px) {
-    .logo__pen {
+    .profile__logo-edit {
         width: 7.5px;
         height: 7.5px;
     }
 }
 
 @media screen and (min-width: 692px) {
-    .logo__pen {
+    .profile__logo-edit {
         width: 10px;
         height: 10px;
     }
