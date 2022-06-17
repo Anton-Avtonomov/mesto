@@ -22,7 +22,7 @@
 
         <main class="main">
 
-            <section class="profile">
+            <!--<section class="profile">
                 <img class="profile__avatar" src="./image/profile/avatar-jacques.jpg" alt="Фото Жака-Ив Кусто">
                 <div class="profile__form">
                     <p class="profile__name">Жак-Ив Кусто
@@ -33,6 +33,20 @@
                     <p class="profile__about-him">Исследователь океана</p>
                 </div>
                 <a class="profile__button-add" href="#"><img class="profile__logo-add" src="./image/profile/add-button.svg" alt="Символ сложения"></a>
+            </section>-->
+
+            <section class="profile">
+                <img class="profile__avatar" src="./image/profile/avatar-jacques.jpg" alt="Фото Жака-Ив Кусто">
+                <div class="profile__form">
+                    <div class="profile__wrapper-name">
+                        <p class="profile__name">Жак-Ив Кусто</p>
+                        <a class="profile__button-edit" href="#popup">
+                            <img class="profile__logo-edit" src="./image/profile/pen.svg" alt="Изображение ручки">
+                        </a>
+                    </div>
+                    <p class="profile__about-him">Исследователь океана</p>
+                </div>
+                <a class="profile__button-add" href="#"><img class="profile__logo-add" src="./image/profile/add-button.svg" alt="Символ сложения"></a>
             </section>
 
             <section class="elements">
@@ -40,7 +54,7 @@
                     <img class="element__image" src="./image/elements/Karachaevsk.png" alt="Изображение храма в горах из города Карачаевск">
                     <div class="element__heading">
                         <h4 class="element__title">Карачаевск</h4>
-                        <img class="logo__like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
 
@@ -48,7 +62,7 @@
                     <img class="element__image" src="./image/elements/elbrus.png" alt="Изображение горы эльбрус на закате">
                     <div class="element__heading">
                         <h4 class="element__title">Гора Эльбрус</h4>
-                        <img class="logo__like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
 
@@ -56,7 +70,7 @@
                     <img class="element__image" src="./image/elements/dombay.png" alt="Изображение гор Домбая">
                     <div class="element__heading">
                         <h4 class="element__title">Домбай</h4>
-                        <img class="logo__like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
 
@@ -64,7 +78,7 @@
                     <img class="element__image" src="./image/elements/sheregesh.jpg" alt="Изображение поселка Шерегеш">
                     <div class="element__heading">
                         <h4 class="element__title">Шерегеш</h4>
-                        <img class="logo__like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
 
@@ -72,7 +86,7 @@
                     <img class="element__image" src="./image/elements/red_glade.jpg" alt="Изображение Красной поляны">
                     <div class="element__heading">
                         <h4 class="element__title">Красная Поляна</h4>
-                        <img class="logo__like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
 
@@ -80,7 +94,7 @@
                     <img class="element__image" src="./image/elements/stepanovo.jpg" alt="Изображение с горнолыжного курорта Степаново">
                     <div class="element__heading">
                         <h4 class="element__title">Горнолыжный курорт Степаново</h4>
-                        <img class="logo__like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
                     </div>
                 </div>
             </section>
@@ -94,10 +108,10 @@
             <div class="popup__container">
                 <form class="popup__content" action="#" method="get" name="profile">
                     <h4 class="popup__heading">Редактировать профиль</h4>
-                    <input class="popup__input" type="text" name="name" value="Жак-Ив Кусто" autofocus>
-                    <input class="popup__input" type="text" name="job" value="Исследователь океана">
+                    <input class="popup__input popup__input_value_name" type="text" name="name" value="Жак-Ив Кусто" autofocus maxlength="30">
+                    <input class="popup__input popup__input_value_about-him" type="text" name="job" value="Исследователь океана" maxlength="50">
                     <button class="popup__button-save">Сохранить</button>
-                    <a class="popup__button-close" href="#"><img src=".//image/closed.svg" alt="" class="popup__logo-close"></a>
+                    <a class="popup__button-close" href="#"><img src=".//image/popup/closed.svg" alt="" class="popup__logo-close"></a>
                 </form>
             </div>
 

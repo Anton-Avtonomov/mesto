@@ -34,6 +34,7 @@
 @import url(../blocks/profile/__form/profile__form.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__about-him/profile__about-him.css);
+@import url(../blocks/profile/__wrapper-name/profile__wrapper-name.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__button-add/profile__buttod-add.css);
 @import url(../blocks/profile/__button-edit/profile__button-edit.css);
@@ -67,6 +68,7 @@
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__logo-close/popup__logo-close.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 
 /* JAVA SCRIPT */
 

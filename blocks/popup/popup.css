@@ -6,12 +6,10 @@
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.7);
-    visibility: hidden;
+    display: none;
+    /*visibility: hidden;*/
 }
 
-.popup__active {
-    visibility: visible;
-}
 
 /*Открытие попАп на чистом CSS
 .popup {
