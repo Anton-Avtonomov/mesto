@@ -1,15 +1,12 @@
 .popup__input {
-    padding-bottom: 13px;
+    font-family: "Inter-Regular", "Arial", "Helvetica", sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    padding-bottom: 13px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     margin: 30px 0 0 0;
-}
-
-.popup__input_value_name {
-    margin: 54px 0 0 0;
 }
 
 .popup__input:focus {

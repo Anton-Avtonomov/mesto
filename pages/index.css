@@ -22,7 +22,6 @@
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 
 /* block MAIN*/
 
@@ -31,7 +30,7 @@
 /* block PROFILE*/
 
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__form/profile__form.css);
+@import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__about-him/profile__about-him.css);
 @import url(../blocks/profile/__wrapper-name/profile__wrapper-name.css);
@@ -67,9 +66,10 @@
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_value/profile__input_value_name.css);
 @import url(../blocks/popup/__logo-close/popup__logo-close.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-
+@import url(../blocks/popup/__wrapper-button-close/popup__wrapper-button-close.css);
 /* JAVA SCRIPT */
 
 @import url(../script/script.js);

@@ -1,15 +1,19 @@
 .profile__name {
+    font-family: "Inter-Medium", "Arial", "Helvetica", sans-serif;
     box-sizing: border-box;
+    height: 39px;
     font-family: "Inter", "Arial", "Helvetica", sans-serif;
     margin: 0;
+    padding: 0;
     font-weight: 500;
     font-size: 42px;
     line-height: 48px;
     width: 294px;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+}
+
+.profile__name_not-value {
+    outline: 1px solid rgba(255, 0, 0, .5);
+    border-radius: 5px;
 }
 
 @media screen and (min-width: 320px) {

@@ -1,6 +1,7 @@
 .profile__button-edit {
     box-sizing: border-box;
-    text-decoration: none;
+    background: none;
+    padding: 0;
     border: 1px solid #fff;
     width: 24px;
     height: 24px;
@@ -15,6 +16,7 @@
     align-items: center;
     margin: 0 0 0 18px;
     align-self: flex-end;
+    cursor: pointer;
 }
 
 .profile__button-edit:hover {

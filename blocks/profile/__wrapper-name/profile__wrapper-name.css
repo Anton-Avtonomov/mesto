@@ -11,7 +11,7 @@
     }
 }
 
-@media screen and (min-width: 692px) {
+@media screen and (min-width: 620px) {
     .profile__wrapper-name {
         padding-left: 0;
     }
