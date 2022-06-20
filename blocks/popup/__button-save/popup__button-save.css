@@ -1,5 +1,5 @@
 .popup__button-save {
-    font-family: "Inter-Regular", "Arial", "Helvetica", sans-serif;
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
@@ -14,6 +14,7 @@
     letter-spacing: 0em;
     text-align: center;
     border: none;
+    border-radius: 2px;
 }
 
 .popup__button-save:hover {
@@ -28,7 +29,7 @@
     }
 }
 
-@media screen and (min-width: 692px) {
+@media screen and (min-width: 550px) {
     .popup__button-save {
         font-size: 18px;
         line-height: 22px;

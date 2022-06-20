@@ -26,34 +26,34 @@
                 <div class="profile__info">
                     <div class="profile__wrapper-name">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__button-edit">
+                        <button class="profile__button-edit" type="button">
                             <img class="profile__logo-edit" src="./image/profile/pen.svg" alt="Изображение ручки">
                         </button>
                     </div>
                     <p class="profile__about-him">Исследователь океана</p>
                 </div>
-                <button class="profile__button-add"><img class="profile__logo-add"
+                <button class="profile__button-add" type="button"><img class="profile__logo-add"
                         src="./image/profile/add-button.svg" alt="Символ сложения"></button>
             </section>
 
             <section class="elements">
                 <div class="element">
-                    <img class="element__image" src="./image/elements/Karachaevsk.png"
-                        alt="Изображение храма в горах из города Карачаевск">
+                    <img class="element__image" src="./image/elements/Karachaevsk.png" alt="Изображение храма в горах из города Карачаевск">
                     <div class="element__heading">
                         <h2 class="element__title">Карачаевск</h2>
-                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-                            alt="Изображение кнопки лайка">
+                        <button class="element__button" type="button">
+                            <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        </button>
                     </div>
                 </div>
 
                 <div class="element">
-                    <img class="element__image" src="./image/elements/elbrus.png"
-                        alt="Изображение горы эльбрус на закате">
+                    <img class="element__image" src="./image/elements/elbrus.png" alt="Изображение горы эльбрус на закате">
                     <div class="element__heading">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-                            alt="Изображение кнопки лайка">
+                        <button class="element__button" type="button">
+                            <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        </button>
                     </div>
                 </div>
 
@@ -61,8 +61,9 @@
                     <img class="element__image" src="./image/elements/dombay.png" alt="Изображение гор Домбая">
                     <div class="element__heading">
                         <h2 class="element__title">Домбай</h2>
-                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-                            alt="Изображение кнопки лайка">
+                        <button class="element__button" type="button">
+                            <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        </button>
                     </div>
                 </div>
 
@@ -70,8 +71,9 @@
                     <img class="element__image" src="./image/elements/sheregesh.jpg" alt="Изображение поселка Шерегеш">
                     <div class="element__heading">
                         <h2 class="element__title">Шерегеш</h2>
-                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-                            alt="Изображение кнопки лайка">
+                        <button class="element__button" type="button">
+                            <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        </button>
                     </div>
                 </div>
 
@@ -79,18 +81,19 @@
                     <img class="element__image" src="./image/elements/red_glade.jpg" alt="Изображение Красной поляны">
                     <div class="element__heading">
                         <h2 class="element__title">Красная Поляна</h2>
-                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-                            alt="Изображение кнопки лайка">
+                        <button class="element__button" type="button">
+                            <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        </button>
                     </div>
                 </div>
 
                 <div class="element">
-                    <img class="element__image" src="./image/elements/stepanovo.jpg"
-                        alt="Изображение с горнолыжного курорта Степаново">
+                    <img class="element__image" src="./image/elements/stepanovo.jpg" alt="Изображение с горнолыжного курорта Степаново">
                     <div class="element__heading">
                         <h2 class="element__title">Горнолыжный курорт Степаново</h2>
-                        <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-                            alt="Изображение кнопки лайка">
+                        <button class="element__button" type="button">
+                            <img class="element__logo-like" src="./image/elements/logo__like_disabled.svg" alt="Изображение кнопки лайка">
+                        </button>
                     </div>
                 </div>
             </section>
@@ -102,27 +105,20 @@
 
         <section class="popup" id="popup">
             <div class="popup__container">
-                <form class="popup__content" action="#" method="get" name="profile">
-                    <h2 class="popup__heading">Редактировать профиль</h2>
-                    <input class="popup__input popup__input_value_name" type="text" name="name" value="Жак-Ив Кусто"
-                        autofocus maxlength="12">
-                    <input class="popup__input popup__input_value_about-him" type="text" name="job"
-                        value="Исследователь океана">
-                    <button type="submit" class="popup__button-save">Сохранить</button>
-                </form>
-                <div class="popup__wrapper-button-close">
-                    <button class="popup__button-close">
-                        <img src=".//image/popup/closed.svg" alt="Символ закрытия окна" class="popup__logo-close">
-                    </button>
+                <div class="popup__content">
+                    <form class="popup__form" action="#" method="get" name="profile">
+                        <h2 class="popup__heading">Редактировать профиль</h2>
+                        <input class="popup__input popup__input_value_name" type="text" name="name" value="Жак-Ив Кусто" autofocus maxlength="12">
+                        <input class="popup__input popup__input_value_about-him" type="text" name="job" value="Исследователь океана">
+                        <button type="submit" class="popup__button-save">Сохранить</button>
+                    </form>
+                    <button class="popup__button-close" type="button"></button>
                 </div>
-
             </div>
 
         </section>
 
     </div>
-
-
     <script src="./script/script.js"></script>
 </body>
 

@@ -1,6 +1,8 @@
 .header__logo {
+    box-sizing: border-box;
     width: 142px;
     height: 33px;
+    margin: 0 0 0 45px;
 }
 
 @media screen and (min-width: 320px) {
@@ -15,6 +17,11 @@
     .header__logo {
         width: 142px;
         height: 33px;
+    }
+}
+
+@media screen and (min-width: 918px) {
+    .header__logo {
         margin-left: 0;
     }
 }

@@ -1,7 +1,6 @@
 .profile__name {
-    font-family: "Inter-Medium", "Arial", "Helvetica", sans-serif;
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
     box-sizing: border-box;
-    height: 39px;
     margin: 0;
     padding: 0;
     font-weight: 500;

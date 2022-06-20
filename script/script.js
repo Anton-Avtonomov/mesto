@@ -17,33 +17,27 @@ const profileAboutHim = document.querySelector('.profile__about-him');
 
 
 // FUNCTIONS
-function popUpOpen() {
+function popUpOpen(evt) {
     popUp.classList.add('popup_opened');
+    profileName.textContent = namePopUp.value;
+    profileAboutHim.textContent = aboutHimPopUp.value;
     // console.log('Пользователь нажал(а) на кнопку редактирования профиля!');
 }
 
 function popUpClosed() {
-
     popUp.classList.remove('popup_opened');
     // console.log('Пользователь нажал(а) на кнопку закрытия попАп!');
 }
 
 // BUTTONS
-buttonEditPopUp.addEventListener('click', function (evt) {
-    evt.preventDefault();
-    popUpOpen();
-})
+buttonEditPopUp.addEventListener('click', popUpOpen);
+buttonClosePopUp.addEventListener('click', popUpClosed);
 
-buttonClosePopUp.addEventListener('click', () =>
-    popUpClosed()
-)
 
 
 // Save value form and closed popUp
 function formSubmitHandler(evt) {
     evt.preventDefault();
-    profileName.textContent = namePopUp.value;
-    profileAboutHim.textContent = aboutHimPopUp.value;
     popUpClosed();
     // console.log('Пользователь нажал(а) на кнопку сохранения попАп!');
 }

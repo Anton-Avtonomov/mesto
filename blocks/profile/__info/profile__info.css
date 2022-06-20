@@ -1,6 +1,5 @@
 .profile__info {
     box-sizing: border-box;
-    height: 73px;
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
