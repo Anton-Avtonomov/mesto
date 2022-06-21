@@ -15,7 +15,6 @@
     -ms-flex-align: center;
     align-items: center;
     margin: 0 0 0 18px;
-    align-self: flex-end;
     cursor: pointer;
 }
 

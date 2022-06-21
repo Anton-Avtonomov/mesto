@@ -8,19 +8,20 @@ const buttonSaveForm = document.querySelector('.popup__button-save');
 
 // VARIABLES
 const formElement = document.querySelector('.popup__content');
-let namePopUp = document.querySelector('.popup__input_value_name');
-let aboutHimPopUp = document.querySelector('.popup__input_value_about-him');
+let popUpName = document.querySelector('.popup__input_value_name');
+let popUpAboutHim = document.querySelector('.popup__input_value_about-him');
 const profileName = document.querySelector('.profile__name');
 const profileAboutHim = document.querySelector('.profile__about-him');
 //ПРОВЕРКА переменных
-//console.log(formElement, valueNamePopUp, valueAboutHimPopUp, profileName, profileAboutHim);
+//console.log(formElement, profileName, profileAboutHim);
 
 
 // FUNCTIONS
 function popUpOpen(evt) {
     popUp.classList.add('popup_opened');
-    profileName.textContent = namePopUp.value;
-    profileAboutHim.textContent = aboutHimPopUp.value;
+    popUpName.value = profileName.textContent;
+    profileAboutHim.textContent = popUpAboutHim.value;
+    popUpAboutHim.value = profileAboutHim.textContent;
     // console.log('Пользователь нажал(а) на кнопку редактирования профиля!');
 }
 
@@ -38,6 +39,8 @@ buttonClosePopUp.addEventListener('click', popUpClosed);
 // Save value form and closed popUp
 function formSubmitHandler(evt) {
     evt.preventDefault();
+    profileName.textContent = popUpName.value;
+    profileAboutHim.textContent = popUpAboutHim.value;
     popUpClosed();
     // console.log('Пользователь нажал(а) на кнопку сохранения попАп!');
 }
@@ -50,30 +53,30 @@ formElement.addEventListener('submit', formSubmitHandler);
 // buttonSaveForm.addEventListener('click', function (evt) {
 //     evt.preventDefault();
 
-//     if (namePopUp.value.length !== 0 && aboutHimPopUp.value.length !== 0) {
-//         profileName.textContent = namePopUp.value;
-//         profileAboutHim.textContent = aboutHimPopUp.value;
+//     if (popUpName.value.length !== 0 && popUpAboutHim.value.length !== 0) {
+//         profileName.textContent = popUpName.value;
+//         profileAboutHim.textContent = popUpAboutHim.value;
 //         popUpClosed();
 //         // console.log('Пользователь нажал(а) на кнопку сохранения формы попАп!');
 //     }
 
-//     else if (namePopUp.value.length === 0 && aboutHimPopUp.value.length === 0) {
+//     else if (popUpName.value.length === 0 && popUpAboutHim.value.length === 0) {
 //         console.log('Поля формы попАп не заполнены!');
-//         namePopUp.classList.add('profile__name_not-value');
-//         namePopUp.setAttribute('placeholder', 'Необходимо заполнить поле');
-//         aboutHimPopUp.classList.add('profile__name_not-value');
-//         aboutHimPopUp.setAttribute('placeholder', 'Необходимо заполнить поле');
+//         popUpName.classList.add('profile__name_not-value');
+//         popUpName.setAttribute('placeholder', 'Необходимо заполнить поле');
+//         popUpAboutHim.classList.add('profile__name_not-value');
+//         popUpAboutHim.setAttribute('placeholder', 'Необходимо заполнить поле');
 //         // console.log('Поля формы попАп не заполнены!');
 //     }
 
-//     else if (namePopUp.value.length === 0) {
-//         namePopUp.classList.add('profile__name_not-value');
-//         namePopUp.setAttribute('placeholder', 'Необходимо заполнить поле');
+//     else if (popUpName.value.length === 0) {
+//         popUpName.classList.add('profile__name_not-value');
+//         popUpName.setAttribute('placeholder', 'Необходимо заполнить поле');
 //         // console.log('Поле формы NAME попАп не заполнена!');
 //     }
-//     else if (aboutHimPopUp.value.length === 0) {
-//         aboutHimPopUp.classList.add('profile__name_not-value');
-//         aboutHimPopUp.setAttribute('placeholder', 'Необходимо заполнить поле');
+//     else if (popUpAboutHim.value.length === 0) {
+//         popUpAboutHim.classList.add('profile__name_not-value');
+//         popUpAboutHim.setAttribute('placeholder', 'Необходимо заполнить поле');
 //         // console.log('Поле формы ABOUT-HIM попАп не заполнена!');
 //     }
 // })
