@@ -20,7 +20,6 @@ const profileAboutHim = document.querySelector('.profile__about-him');
 function popUpOpen(evt) {
     popUp.classList.add('popup_opened');
     popUpName.value = profileName.textContent;
-    profileAboutHim.textContent = popUpAboutHim.value;
     popUpAboutHim.value = profileAboutHim.textContent;
     // console.log('Пользователь нажал(а) на кнопку редактирования профиля!');
 }

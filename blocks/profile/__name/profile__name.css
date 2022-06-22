@@ -7,6 +7,10 @@
     font-size: 42px;
     line-height: 48px;
     width: 294px;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .profile__name_not-value {
