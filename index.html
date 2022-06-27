@@ -103,16 +103,30 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
 
-        <section class="popup" id="popup">
+        <section class="popup" id="popup-profile">
             <div class="popup__container">
                 <div class="popup__content">
                     <form class="popup__form" action="#" method="get" name="profile">
                         <h2 class="popup__heading">Редактировать профиль</h2>
                         <input class="popup__input popup__input_value_name" type="text" name="name" value="Жак-Ив Кусто" autofocus>
                         <input class="popup__input popup__input_value_about-him" type="text" name="job" value="Исследователь океана">
-                        <button type="submit" class="popup__button-save">Сохранить</button>
+                        <button type="submit" class="popup__button">Сохранить</button>
                     </form>
-                    <button class="popup__button-close" type="button"></button>
+                    <button class="popup__button-close" type="button" id="button-close-popup-profile"></button>
+                </div>
+            </div>
+
+        </section>
+        <section class="popup" id="popup-place">
+            <div class="popup__container">
+                <div class="popup__content">
+                    <form class="popup__form popup__form_place_card" action="#" method="get" name="place">
+                        <h2 class="popup__heading">Новое место</h2>
+                        <input class="popup__input popup__input_place_title" type="text" name="place-title" autofocus placeholder="Название">
+                        <input class="popup__input popup__input_place_link" type="text" name="place-link" placeholder="Ссылка на картинку">
+                        <button type="submit" class="popup__button popup__button_action_create">Создать</button>
+                    </form>
+                    <button class="popup__button-close" id="button-close-popup-place" type="button"></button>
                 </div>
             </div>
 
