@@ -1,62 +1,120 @@
 // VARIABLES
 const popUpProfile = document.getElementById('popup-profile');
 const popUpPlace = document.getElementById('popup-place');
-
+const popUp = document.querySelector('.popup');
 const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
-const buttonClosePopUp = document.querySelectorAll('.popup__button-close');
+const buttonClosePopUpProfile = document.getElementById('button-close-popup-profile');
+const buttonClosePopUpPlace = document.getElementById('button-close-popup-place');
 const buttonSaveFormProfile = document.querySelector('.popup__button-save');
 const buttonAddCardPlace = document.querySelector('.profile__button-add');
 //ПРОВЕРКА переменных
 //console.log(popUpEditProfile, popUpAddCard, buttonEditPopUpProfile, buttonClosePopUpProfile, buttonSaveFormProfile);
-
-const formElement = document.querySelector('.popup__content');
+const popUps = document.querySelectorAll('.popup');
+const formElement = document.querySelector('.popup__form');
 let popUpInputName = document.querySelector('.popup__input_value_name');
 let popUpInputAboutHim = document.querySelector('.popup__input_value_about-him');
 const profileName = document.querySelector('.profile__name');
 const profileAboutHim = document.querySelector('.profile__about-him');
 
 //ПРОВЕРКА переменных
-//console.log(formElement, profileName, profileAboutHim);
-
-
-// FUNCTIONS
-function openPopUpProfile(evt) {
-    popUpProfile.classList.add('popup_opened');
-    popUpInputName.value = profileName.textContent;
-    popUpInputAboutHim.value = profileAboutHim.textContent;
-    // console.log('Пользователь нажал(а) на кнопку редактирования профиля!');
-}
-
-function openPopUpPlace() {
-    popUpPlace.classList.add('popup_opened');
-    // console.log('Пользователь нажал(а) на кнопку добавления карточки места!');
-}
-
-
-const popUp = document.querySelectorAll('.popup');
-
-function closePopUp() {
-    popUp.classList.remove('popup_opened');
-    console.log('Пользователь нажал(а) на кнопку закрытия попАпа');
-}
+//console.log(formElement, popUpInputName, popUpInputAboutHim, profileName, profileAboutHim);
 
 // ACTIONS
 buttonEditPopUpProfile.addEventListener('click', openPopUpProfile);
 buttonAddCardPlace.addEventListener('click', openPopUpPlace);
-buttonClosePopUp.addEventListener('click', closePopUp);
+buttonClosePopUpProfile.addEventListener('click', closePopUpProfile);
+buttonClosePopUpPlace.addEventListener('click', closePopUpPlace);
 
+// FUNCTIONS
+function openPopUpProfile() {
+    popUpProfile.classList.add('popup_opened');
+    popUpInputName.value = profileName.textContent;
+    popUpInputAboutHim.value = profileAboutHim.textContent;
+    console.log('Пользователь нажал(а) на кнопку редактирования профиля!');
+}
 
+function openPopUpPlace() {
+    popUpPlace.classList.add('popup_opened');
+    console.log('Пользователь нажал(а) на кнопку добавления карточки места!');
+}
+
+function closePopUpProfile() {
+    popUpProfile.classList.remove('popup_opened');
+    console.log('Пользователь нажал(а) на кнопку закрытия попАпа');
+}
+
+function closePopUpPlace() {
+    popUpPlace.classList.remove('popup_opened');
+    console.log('Пользователь нажал(а) на кнопку закрытия попАпа');
+}
 
 // Save value form and closed popUp
 function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = popUpInputName.value;
     profileAboutHim.textContent = popUpInputAboutHim.value;
-    closePopUp();
-    // console.log('Пользователь нажал(а) на кнопку сохранения попАп!');
+    closePopUpProfile();
+    console.log('Пользователь нажал(а) на кнопку сохранения попАп!');
 }
 
+
+
+
 formElement.addEventListener('submit', formSubmitHandler);
+
+// like button
+
+const buttonLike = document.getElementById('element__logo-like');
+
+function like() {
+    buttonLike.classList.toggle('element__logo-like_active');
+}
+
+buttonLike.addEventListener('click', like);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Моя доработка кода, но я не смог понять как удалить класс profile__name_not-value при ПОВТОРНОМ нажатии кнопки редактирования

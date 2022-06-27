@@ -7,7 +7,7 @@
     opacity: .5;
 }
 
-.element__logo-like:active {
+.element__logo-like_active {
     background-image: url(../../../image/elements/logo__like_active.svg);
     opacity: 1;
 }
