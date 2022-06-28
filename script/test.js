@@ -11,7 +11,7 @@ const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
 const buttonAddCardPlace = document.querySelector('.profile__button-add');
 const popUps = document.querySelectorAll('.popup');
 const buttonClosePopUp = document.querySelectorAll('.popup__button-close');
-// const buttonsLike = document.querySelectorAll('element__logo-like');
+const buttonsLike = document.querySelectorAll('.element__logo-like');
 
 
 // FUNCTION
@@ -28,10 +28,10 @@ function openPopUpPlace() {
 }
 
 function closePopUp() {
-popUps.forEach(function(popUp) {
-    popUp.classList.remove('popup_opened');
-    console.log('Пользователь нажал(а) на кнопку закрытия попАпа!');
-});
+    popUps.forEach(function(popUp) {
+        popUp.classList.remove('popup_opened');
+        console.log('Пользователь нажал(а) на кнопку закрытия попАпа!');
+    });
 }
 
 function formSubmitHandler(evt) {
@@ -41,16 +41,45 @@ function formSubmitHandler(evt) {
     profileAboutHim.textContent = popUpInputAboutHim.value;
     closePopUp();
 }
-profileForm.addEventListener('submit', formSubmitHandler);
+//Методом ForEach обходим коллекцию и получаем элементы c именем "btn" (функция callBack)
+buttonsLike.forEach(function(btn) {
+    //Элементу "btn" добавляем слушатель по событию клика 
+    btn.addEventListener('click', function(evt) {
+        //Добавляем 
+        evt.target.classList.toggle('element__logo-like_active');
+    })
+})
 
 // LISTENER
+profileForm.addEventListener('submit', formSubmitHandler);
 buttonEditPopUpProfile.addEventListener('click', openPopUpProfile);
 buttonAddCardPlace.addEventListener('click', openPopUpPlace);
 buttonClosePopUp.forEach((btn) => {
     btn.addEventListener('click', closePopUp);
 });
 
+console.log(buttonsLike);
 
 
 
 
+
+
+//сообщение в консоль
+console.log('Hello Antony');
+//объявление массива
+let firstName = ['Anton', 'Marina', 'Konastantin', 'Olga'];
+let lastName = ['Avtonomov', 'Avtonomova']
+console.log(firstName, lastName);
+//пересвоение значений массива
+firstName = ['Slava', 'Katya'];
+console.log(firstName);
+//поиск элемента по селектору
+let example = document.querySelector('.example');
+console.log(example);
+//поиск всех элементов с указанным селектором - создание коллекции
+let exampleItem = document.querySelectorAll('.example__item');
+console.log(exampleItem);
+//Добавление класса определенному элементу массива
+exampleItem[0].classList.add('new-class');
+console.log(exampleItem[0]);
