@@ -41,11 +41,12 @@ function formSubmitHandler(evt) {
     profileAboutHim.textContent = popUpInputAboutHim.value;
     closePopUp();
 }
+//Кнопка Like
 //Методом ForEach обходим коллекцию и получаем элементы c именем "btn" (функция callBack)
 buttonsLike.forEach(function(btn) {
     //Элементу "btn" добавляем слушатель по событию клика 
     btn.addEventListener('click', function(evt) {
-        //Добавляем 
+        //Добавление и удаление класса по клику кнопке лайка
         evt.target.classList.toggle('element__logo-like_active');
     })
 })
@@ -59,10 +60,6 @@ buttonClosePopUp.forEach((btn) => {
 });
 
 console.log(buttonsLike);
-
-
-
-
 
 
 //сообщение в консоль
