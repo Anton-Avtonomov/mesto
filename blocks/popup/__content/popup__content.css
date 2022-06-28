@@ -23,3 +23,8 @@
         padding: 34px 36px 37px 36px;
     }
 }
+
+.popup__content_card_place {
+    max-width: 75vw;
+    max-height: 75vh;
+}

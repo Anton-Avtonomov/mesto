@@ -1,4 +1,4 @@
-.element__button {
+.element__button-like {
     box-sizing: border-box;
     background: none;
     border: none;
@@ -8,3 +8,6 @@
     cursor: pointer;
 }
 
+.element__button-like:hover {
+    opacity: .5;
+}

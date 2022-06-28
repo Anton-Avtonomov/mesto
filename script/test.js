@@ -12,6 +12,34 @@ const buttonAddCardPlace = document.querySelector('.profile__button-add');
 const popUps = document.querySelectorAll('.popup');
 const buttonClosePopUp = document.querySelectorAll('.popup__button-close');
 const buttonsLike = document.querySelectorAll('.element__logo-like');
+const buttonDeletePlace = document.querySelectorAll('.element__logo-delete');
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
 
 
 // FUNCTION
@@ -28,7 +56,7 @@ function openPopUpPlace() {
 }
 
 function closePopUp() {
-    popUps.forEach(function(popUp) {
+    popUps.forEach(function (popUp) {
         popUp.classList.remove('popup_opened');
         console.log('Пользователь нажал(а) на кнопку закрытия попАпа!');
     });
@@ -43,40 +71,61 @@ function formSubmitHandler(evt) {
 }
 //Кнопка Like
 //Методом ForEach обходим коллекцию и получаем элементы c именем "btn" (функция callBack)
-buttonsLike.forEach(function(btn) {
+buttonsLike.forEach(function (btn) {
     //Элементу "btn" добавляем слушатель по событию клика 
-    btn.addEventListener('click', function(evt) {
+    btn.addEventListener('click', function (evt) {
         //Добавление и удаление класса по клику кнопке лайка
         evt.target.classList.toggle('element__logo-like_active');
+        console.log(`Пользователю понравилась карточка ${evt.target}`);
     })
 })
+
+// Кнопка удалить место
+//Методом ForEach обходим коллекцию и получаем элементы c именем "btn" (функция callBack)
+buttonDeletePlace.forEach(function (btn) {
+    //Элементу "btn" добавляем слушатель по событию клика 
+    btn.addEventListener('click', function (evt) {
+        //Элемент с которым работает функция.Отслеживаем кнопки на которую нажали.Ищем его родительский элемент.Удаляем карточку места из дома
+        evt.target.closest('.element').remove();
+        console.log('Пользователь нажал(а) на кнопку удаления корточки места!');
+    })
+})
+
+// Открытие ПопАп карточки места
+const buttonsOpenPopUpCardPlace = document.querySelectorAll('.element');
+const popUpCardPlace = document.getElementById('popup-card-place');
+
+function openPopUpCardPlace() {
+    popUpCardPlace.classList.add('popup_opened');
+}
+buttonsOpenPopUpCardPlace.forEach(function(btn) {
+    btn.addEventListener('click', openPopUpCardPlace);
+})
+
 
 // LISTENER
 profileForm.addEventListener('submit', formSubmitHandler);
 buttonEditPopUpProfile.addEventListener('click', openPopUpProfile);
 buttonAddCardPlace.addEventListener('click', openPopUpPlace);
-buttonClosePopUp.forEach((btn) => {
+buttonClosePopUp.forEach(function (btn) {
     btn.addEventListener('click', closePopUp);
 });
 
-console.log(buttonsLike);
 
 
-//сообщение в консоль
-console.log('Hello Antony');
-//объявление массива
-let firstName = ['Anton', 'Marina', 'Konastantin', 'Olga'];
-let lastName = ['Avtonomov', 'Avtonomova']
-console.log(firstName, lastName);
-//пересвоение значений массива
-firstName = ['Slava', 'Katya'];
-console.log(firstName);
-//поиск элемента по селектору
-let example = document.querySelector('.example');
-console.log(example);
-//поиск всех элементов с указанным селектором - создание коллекции
-let exampleItem = document.querySelectorAll('.example__item');
-console.log(exampleItem);
-//Добавление класса определенному элементу массива
-exampleItem[0].classList.add('new-class');
-console.log(exampleItem[0]);
+// //сообщение в консоль
+// console.log('Hello Antony');
+// //объявление массива
+// let firstName = ['Anton', 'Marina', 'Konastantin', 'Olga'];
+// let lastName = ['Avtonomov', 'Avtonomova']
+// console.log(firstName, lastName);
+// //пересвоение значений массива
+// firstName = ['Slava', 'Katya'];
+// console.log(firstName);
+// //поиск элемента по селектору
+// let example = document.querySelector('.example');
+// console.log(example);
+// //поиск всех элементов с указанным селектором - создание коллекции
+// let exampleItem = document.querySelectorAll('.example__item');
+// console.log(exampleItem);
+

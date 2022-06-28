@@ -3,11 +3,25 @@
     height: 100%;
 }
 
-.element__logo-like:hover {
-    opacity: .5;
-}
-
 .element__logo-like_active {
     background-image: url(../../../image/elements/logo__like_active.svg);
     opacity: 1;
+}
+
+
+
+.element__button-delete {
+box-sizing: border-box;
+position: absolute;
+top: 20px;
+right: 20px;
+z-index: 2;
+background: none;
+border: none;
+cursor: pointer;
+padding: 0;
+}
+
+.element__logo-delete:hover {
+    opacity: .5;  
 }
