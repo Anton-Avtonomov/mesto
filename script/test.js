@@ -18,9 +18,6 @@ const buttonDeleteCardPlace = document.querySelectorAll('.element__logo-delete')
 const templateCardPlace = document.getElementById('template-card-place').content;
 
 
-
-
-
 // !FUNCTION
 function openPopUpProfile() {
 	popUpProfile.classList.add('popup_opened');
@@ -52,9 +49,6 @@ function formSubmitHandler(evt) {
 	profileAboutHim.textContent = popUpProfileInputAboutHim.value;
 	closePopUp();
 }
-
-
-
 
 // !Кнопка Like
 //Методом ForEach обходим коллекцию и получаем элементы c именем "btn" (функция callBack)
@@ -114,21 +108,3 @@ buttonAddCardPlace.addEventListener('click', openPopUpPlace);
 buttonClosePopUp.forEach(function (btn) {
 	btn.addEventListener('click', closePopUp);
 });
-
-
-
-// //сообщение в консоль
-// console.log('Hello Antony');
-// //объявление массива
-// let firstName = ['Anton', 'Marina', 'Konastantin', 'Olga'];
-// let lastName = ['Avtonomov', 'Avtonomova']
-// console.log(firstName, lastName);
-// //пересвоение значений массива
-// firstName = ['Slava', 'Katya'];
-// console.log(firstName);
-// //поиск элемента по селектору
-// let example = document.querySelector('.example');
-// console.log(example);
-// //поиск всех элементов с указанным селектором - создание коллекции
-// let exampleItem = document.querySelectorAll('.example__item');
-// console.log(exampleItem);
