@@ -89,27 +89,33 @@ function closePopUp() {
 function renderCardsPlace() {
 	const initialCardsPlace = [{
 			name: 'Архыз',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+		alt:	'Фотография гор Архыз РФ',
 		},
 		{
 			name: 'Челябинская область',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+			alt:	'Фотография Челябинской области РФ',
 		},
 		{
 			name: 'Иваново',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+			alt:	'Фотография из Города Иваново РФ',
 		},
 		{
 			name: 'Камчатка',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+			alt:	'Изображение природы на Камчатке РФ',
 		},
 		{
 			name: 'Холмогорский район',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+			alt:	'Изображение Холмогорского район РФ',
 		},
 		{
 			name: 'Байкал',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+			alt:	'Изображение озера Байкал РФ',
 		}
 	];
 
@@ -123,7 +129,7 @@ function renderCardPlace(cardPlace) {
 	const contentTemplateCardPlace = templateCardPlace.cloneNode(true);
 	// Нахожу в созданной копии карточки атрибут src элемента изображения и присваиваю его параметру функции - card
 	contentTemplateCardPlace.querySelector('.element__image').src = cardPlace.link;
-	contentTemplateCardPlace.querySelector('.element__image').alt = cardPlace.link;
+	contentTemplateCardPlace.querySelector('.element__image').alt = cardPlace.alt;
 	contentTemplateCardPlace.querySelector('.element__title').textContent = cardPlace.name;
 	// Вешаем слушатели карточки
 	setEventListener(contentTemplateCardPlace);
@@ -137,6 +143,7 @@ function createNewCardPlace() {
 		const contentTemplateCardPlace = templateCardPlace.cloneNode(true);
 		contentTemplateCardPlace.querySelector('.element__title').textContent = inputTitlePhoto.value;
 		contentTemplateCardPlace.querySelector('.element__image').src = inputLinkPhoto.value;
+		contentTemplateCardPlace.querySelector('.element__image').alt = `Фотография ${inputTitlePhoto.value}`;
 		setEventListener(contentTemplateCardPlace);
 		blockCardsPlace.append(contentTemplateCardPlace);
 		closePopUp();
