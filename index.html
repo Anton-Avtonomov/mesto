@@ -138,7 +138,7 @@
 		<section class="popup" id="popup-profile">
 			<div class="popup__container">
 				<div class="popup__content">
-					<form class="popup__form popup__form_profile_form" action="#" method="get" name="profile">
+					<form class="popup__form" id="profile-form" action="#" method="get" name="profile">
 						<h2 class="popup__heading">Редактировать профиль</h2>
 						<input class="popup__input popup__input_string_name" type="text" name="name" value="Жак-Ив Кусто" autofocus>
 						<input class="popup__input popup__input_string_about-him" type="text" name="job"
@@ -153,7 +153,7 @@
 		<section class="popup" id="popup-place">
 			<div class="popup__container">
 				<div class="popup__content">
-					<form class="popup__form popup__form_card-place_form" action="#" method="get" name="place">
+					<form class="popup__form" id="place-form" action="#" method="get" name="place">
 						<h2 class="popup__heading">Новое место</h2>
 						<input class="popup__input popup__input_card-place_title" type="text" name="place-title" autofocus
 							placeholder="Название">
@@ -165,10 +165,12 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="popup" id="popup-card-place">
 			<div class="popup__container">
-				<div class="popup__content">
+				<div class="popup__content-card-place">
+					<img class="popup__image" src="#" alt="">
+					<h2 class="popup__image-title"></h2>
 					<button class="popup__button-close" type="button"></button>
 				</div>
 			</div>
@@ -190,8 +192,7 @@
 				</div>
 		</template>
 	</div>
-	<!-- <script src="./script/script.js"></script> -->
-	<script src="./script//test.js"></script>
+	<script src="./script/script.js"></script>
 </body>
 
 

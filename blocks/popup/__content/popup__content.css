@@ -23,8 +23,25 @@
         padding: 34px 36px 37px 36px;
     }
 }
-
-.popup__content_card_place {
+/* структурировать по БЭМ */
+.popup__content-card-place {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.popup__image {
     max-width: 75vw;
     max-height: 75vh;
+    object-fit: contain;
+}
+
+.popup__image-title {
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    align-self: flex-start;
 }
