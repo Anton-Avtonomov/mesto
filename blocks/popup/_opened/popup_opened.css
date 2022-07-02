@@ -1,4 +1,9 @@
 .popup_opened {
-    display: block;
-    /*visibility: visible;*/
+    visibility: visible;
+    -webkit-transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    opacity: 1;
+    -webkit-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
 }
