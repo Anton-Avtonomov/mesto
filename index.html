@@ -36,100 +36,7 @@
 						src="./image/profile/add-button.svg" alt="Символ сложения"></button>
 			</section>
 
-			<section class="elements">
-				<div class="element">
-					<img class="element__image" src="./image/elements/алтай.jpg"
-						alt="Изображение храма в горах из города Карачаевск">
-					<div class="element__heading">
-						<h2 class="element__title">Алтайский край</h2>
-						<button class="element__button-like" type="button">
-							<img class="element__logo-like" id="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-								alt="Изображение гор в Алтайском крае">
-						</button>
-					</div>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-
-				<div class="element">
-					<img class="element__image" src="./image/elements/Абхазия_озеро_рица.jpg"
-						alt="Изображение озера Рица в Абхазии">
-					<div class="element__heading">
-						<h2 class="element__title">Абхазия</h2>
-						<button class="element__button-like" type="button">
-							<img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-								alt="Изображение кнопки лайка">
-						</button>
-					</div>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-
-				<div class="element">
-					<img class="element__image" src="./image/elements/Дагестан.jpg" alt="Изображение гор в Дагетане">
-					<div class="element__heading">
-						<h2 class="element__title">Дагестан</h2>
-						<button class="element__button-like" type="button">
-							<img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-								alt="Изображение кнопки лайка">
-						</button>
-					</div>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-
-				<div class="element">
-					<img class="element__image" src="./image/elements/sheregesh.jpg" alt="Изображение поселка Шерегеш">
-					<div class="element__heading">
-						<h2 class="element__title">Шерегеш</h2>
-						<button class="element__button-like" type="button">
-							<img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-								alt="Изображение кнопки лайка">
-						</button>
-					</div>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-
-				<div class="element">
-					<img class="element__image" src="./image/elements/red_glade.jpg" alt="Изображение Красной поляны">
-					<div class="element__heading">
-						<h2 class="element__title">Красная Поляна</h2>
-						<button class="element__button-like" type="button">
-							<img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-								alt="Изображение кнопки лайка">
-						</button>
-					</div>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-
-				<div class="element">
-					<img class="element__image" src="./image/elements/stepanovo.jpg"
-						alt="Изображение с горнолыжного курорта Степаново">
-					<div class="element__heading">
-						<h2 class="element__title">Горнолыжный курорт Степаново</h2>
-						<button class="element__button-like" type="button">
-							<img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
-								alt="Изображение кнопки лайка">
-						</button>
-					</div>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-			</section>
+			<section class="elements"></section>
 		</main>
 
 		<footer class="footer">
@@ -154,10 +61,10 @@
 		<section class="popup" id="popup-place">
 			<div class="popup__container">
 				<div class="popup__content">
-					<form class="popup__form" id="place-form" action="#" method="get" name="place">
+					<form class="popup__form" id="card-place-form" action="#" method="get" name="place">
 						<h2 class="popup__heading">Новое место</h2>
 						<input class="popup__input popup__input_card-place_title" type="text" name="place-title"
-							placeholder="Название">
+							placeholder="Название" required>
 						<input class="popup__input popup__input_card-place_link" type="url" name="place-link"
 							placeholder="Ссылка на картинку" required>
 						<button type="button" class="popup__button popup__button_action_create">Создать</button>
@@ -183,18 +90,19 @@
 				<div class="element__heading">
 					<h2 class="element__title">Заголовок template card place</h2>
 					<button class="element__button-like" type="button">
-						<img class="element__logo-like" src="./image/elements/logo__like_disabled.svg"
+						<img class="element__logo-like" src="./image/elements/logo-like.svg"
 							alt="Изображение кнопки лайка">
 					</button>
 					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo__delete.png"
+						<img class="element__logo-delete" src="./image/elements/logo-delete.png"
 							alt="Изображение мусорной корзины">
 					</button>
 				</div>
 			</div>
 		</template>
 	</div>
-	<script src="./script/script.js"></script>
+	<script src="./script/initial-cards.js"></script>
+	<script src="./script/index.js"></script>
 </body>
 
 

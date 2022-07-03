@@ -52,6 +52,8 @@
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__button-like/element__button-like.css);
 @import url(../blocks/element/__logo-like/element__logo-like.css);
+@import url(../blocks/element/__button-delete/element__button-delete.css);
+@import url(../blocks/element/__logo-like/_active/element__logo-like_active.css);
 
 /* block FOOTER*/
 
