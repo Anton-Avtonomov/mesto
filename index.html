@@ -32,8 +32,10 @@
 					</div>
 					<p class="profile__about-him">Исследователь океана</p>
 				</div>
-				<button class="profile__button-add" type="button"><img class="profile__logo-add"
-						src="./image/profile/add-button.svg" alt="Символ сложения"></button>
+				<button class="profile__button-add" type="button">
+					<img class="profile__logo-add"
+						src="./image/profile/add-button.svg" alt="Символ сложения">
+					</button>
 			</section>
 
 			<section class="elements"></section>
@@ -48,9 +50,9 @@
 				<div class="popup__content">
 					<form class="popup__form" id="profile-form" action="#" method="get" name="profile">
 						<h2 class="popup__heading">Редактировать профиль</h2>
-						<input class="popup__input popup__input_string_name" type="text" name="name" value="Жак-Ив Кусто" autofocus>
+						<input class="popup__input popup__input_string_name" type="text" name="name" value="Жак-Ив Кусто" autofocus required>
 						<input class="popup__input popup__input_string_about-him" type="text" name="job"
-							value="Исследователь океана">
+							value="Исследователь океана" required>
 						<button type="submit" class="popup__button">Сохранить</button>
 					</form>
 					<button class="popup__button-close" type="button" id="button-close-popup-profile"></button>
@@ -69,17 +71,17 @@
 							placeholder="Ссылка на картинку" required>
 						<button type="button" class="popup__button popup__button_action_create">Создать</button>
 					</form>
-					<button class="popup__button-close" type="button"></button>
+					<button class="popup__button-close" id="button-close-popup-place" type="button"></button>
 				</div>
 			</div>
 		</section>
 
-		<section class="popup" id="popup-card-place">
+		<section class="popup popup_name_card-place" id="popup-card-place">
 			<div class="popup__container">
 				<div class="popup__content-card-place">
 					<img class="popup__image" src="#" alt="">
 					<h2 class="popup__image-title"></h2>
-					<button class="popup__button-close" type="button"></button>
+					<button class="popup__button-close" id="button-close-popup-card-place" type="button"></button>
 				</div>
 			</div>
 		</section>

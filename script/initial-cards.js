@@ -61,3 +61,18 @@ const initialCardsPlace = [
 		alt: 'Фотография гор в Дагетане РФ',
 	},
 ];
+
+// function renderingCardPlace(objectCardPlace) {
+// 	// Клонирую карточку для добавления туда контента
+// 	const contentTemplateCardPlace = templateCardPlace.cloneNode(true);
+// 	const templateImage = contentTemplateCardPlace.querySelector('.element__image');
+// 	// Нахожу в созданной копии карточки атрибут src элемента изображения и присваиваю его параметру функции - card
+// 	templateImage.src = objectCardPlace.link;
+// 	templateImage.alt = objectCardPlace.alt;
+// 	contentTemplateCardPlace.querySelector('.element__title').textContent = objectCardPlace.name;
+// 	// Вешаем слушатели карточки
+// 	// setEventListener(contentTemplateCardPlace);
+// 	// Добавляем карточку в начало DOM контейнера с карточками
+// 	blockCardsPlace.prepend(contentTemplateCardPlace);
+// 	console.log('Выполнена функция добавления карточки места');
+// };
