@@ -5,8 +5,6 @@ const templateCardPlace = document.getElementById('template-card-place').content
 const blockCardsPlace = document.querySelector('.elements');
 // Кнопка добавления карточки
 const buttonOpenPopUpPlace = document.querySelector('.profile__button-add');
-// Кнопка создания новой карточки
-const buttonCreateNewCardPlace = document.querySelector('.popup__button_action_create');
 // Кнопка редактирования профиля
 const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
 // Коллекция кнопок закрытия Попапов
@@ -85,6 +83,7 @@ function openPopUpPlace() {
 function handleSubmitFormPlace(event) {
     event.preventDefault();
     closePopUp(popUpPlace);
+    renderNewCardPlace();
     // console.log(`Сработал submit в ${popUpPlace.id}!`);
 };
 formPlace.addEventListener('submit', handleSubmitFormPlace);
@@ -116,59 +115,37 @@ popUps.forEach(function(popup) {
     popup.addEventListener('click', handleClosePop);
 });
 
-// !Функция добавления карточки места
+// !Функция создания карточки места
+function createCardPlace(objectCardPlace) {
+    //cоздаю копию template карточки
+    const htmlCardElement = templateCardPlace.cloneNode(true);
+    //нахожу нужные элементы template им значения атрибутов от параметра функции
+    const titleCardElement = htmlCardElement.querySelector('.element__image');
+    titleCardElement.src = objectCardPlace.link;
+    titleCardElement.alt = objectCardPlace.alt;
+    htmlCardElement.querySelector('.element__title').textContent = objectCardPlace.title;
+    //вешаю слушатели на параметр функции
+    setEventListener(htmlCardElement);
+    //console.log('Выполнена функция создания карточки');
+    //Возвращаю заполенную карточку
+    return htmlCardElement;
+}
 
-//function createCard(oneParametr, twoParametr, threeParametr) {
-//    const contentTemplateCardPlace = templateCardPlace.cloneNode(true);
-//    setEventListener(contentTemplateCardPlace);
-//    contentTemplateCardPlace.querySelector('.element__image').src = oneParametr;
-//    contentTemplateCardPlace.querySelector('.element__image').alt = twoParametr;
-//    contentTemplateCardPlace.querySelector('.element__title').textContent = threeParametr;
-//    console.log('Выполнена функция создания карточки');
-//    return contentTemplateCardPlace;
-//}
-//initialCardsPlace.forEach(function(dataCardObject) {
-//    createCard(dataCardObject.link, dataCardObject.alt, dataCardObject.name);
-//    blockCardsPlace.prepend(dataCardObject);
-//    console.log('добавлена новая карточка');
-//})
-
-// !!!Далее не могу реализовать, е понимаю как нужны подсказки
-function renderingCardPlace(objectCardPlace) {
-    // Клонирую карточку для добавления туда контента
-    const contentTemplateCardPlace = templateCardPlace.cloneNode(true);
-    const templateImage = contentTemplateCardPlace.querySelector('.element__image');
-    // Нахожу в созданной копии карточки атрибут src элемента изображения и присваиваю его параметру функции - card
-    templateImage.src = objectCardPlace.link;
-    templateImage.alt = objectCardPlace.alt;
-    contentTemplateCardPlace.querySelector('.element__title').textContent = objectCardPlace.name;
-    // // Вешаем слушатели карточки
-    setEventListener(contentTemplateCardPlace);
-    // Добавляем карточку в начало DOM контейнера с карточками
-
-    blockCardsPlace.prepend(contentTemplateCardPlace);
-    // console.log('Выполнена функция добавления карточки места');
-};
-
-// !Функция добавления новой карточки в DOM
-function createNewCardPlace() {
-    if (inputTitlePhoto.value.length !== 0 && inputLinkPhoto.value.length !== 0) {
-        const contentTemplateCardPlace = templateCardPlace.cloneNode(true);
-        const templateImage = contentTemplateCardPlace.querySelector('.element__image');
-        templateImage.src = inputLinkPhoto.value;
-        templateImage.alt = `Фотография ${inputTitlePhoto.value}`;
-        contentTemplateCardPlace.querySelector('.element__title').textContent = inputTitlePhoto.value;
-        setEventListener(contentTemplateCardPlace);
-        blockCardsPlace.prepend(contentTemplateCardPlace);
-        closePopUp(popUpPlace);
-        // console.log('Пользователь добавил новую карточку места');
-    }
-    // } else {
-    //     alert('Необходимо заполнить все поля!');
-    // }
-};
-// Кнопка создания новой карточки в форме 
-buttonCreateNewCardPlace.addEventListener('click', createNewCardPlace);
+//Функция добавления новых карточек места на основе данных форм инпутов попапа Place
+function renderNewCardPlace() {
+    const newObjectCardPlace = { link: inputLinkPhoto.value, alt: `Фотография ${inputLinkPhoto.value}`, title: inputTitlePhoto.value }
+    const newCardPlace = createCardPlace(newObjectCardPlace);
+    blockCardsPlace.prepend(newCardPlace);
+    //console.log(`Пользователь добавил новуй карточку места под названием ${newObjectCardPlace.title}`);
+}
+// !Загрузка начальных карточек места
+initialCardsPlace.forEach(function(element) {
+    //подставляю объект массива в качестве параметра функции по созданию карточки
+    const newCardPlace = createCardPlace(element);
+    //Добавляю готовую карточку в DOM
+    blockCardsPlace.prepend(newCardPlace);
+    //console.log('Выполнена функция ДОБАВЛЕНИЯ карточки');
+});
 
 // !Функция удаления карточки по event
 function handleDelete(event) {
@@ -192,13 +169,3 @@ function setEventListener(element) {
     element.querySelector('.element__image').addEventListener('click', openPopUpCardPlace);
     // console.log('Добавлены слушатели: Удаления карточек, Добавления лайка, открытия попАпа карточки места')
 };
-
-//! Загрузка карточек мест на страницу
-function loadCardsPlace() {
-    // Прохожусь функцией renderCardPlace по всем объектам массива с шаблонными карточками
-    initialCardsPlace.forEach(function(objectCardPlace) {
-        renderingCardPlace(objectCardPlace);
-    });
-    // console.log('Произошла загрузка ВСЕХ карточек места');
-};
-loadCardsPlace();
