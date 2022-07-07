@@ -1,22 +1,51 @@
+/* обнуляющие стили (NORMALIZE)*/
+
 @import url(../vendor/normalize.css);
+
+/* шрифты FONTS */
+
 @import url(../vendor/fonts/fonts.css);
+
+/* BODY */
+
 @import url(../blocks/body/body.css);
+
+/* обертка главной страницы (ROOT) */
+
 @import url(../blocks/root/root.css);
+
+/* element INPUT*/
+
 @import url(../blocks/input/input.css);
+
+/* block HEADER*/
+
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+
+/* block MAIN*/
+
 @import url(../blocks/main/main.css);
+
+/* block PROFILE*/
+
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__about-him/profile__about-him.css);
 @import url(../blocks/profile/__wrapper-name/profile__wrapper-name.css);
 @import url(../blocks/profile/__name/profile__name.css);
-@import url(../blocks/profile/__logo-add/profile__logo-add.css);
-@import url(../blocks/profile/__logo-edit/profile__logo-edit.css);
 @import url(../blocks/profile/__button-add/profile__buttod-add.css);
 @import url(../blocks/profile/__button-edit/profile__button-edit.css);
+@import url(../blocks/profile/__logo-add/profile__logo-add.css);
+@import url(../blocks/profile/__logo-edit/profile__logo-edit.css);
+
+/* block ELEMENTS*/
+
 @import url(../blocks/elements/elements.css);
+
+/* block ELEMENT*/
+
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__heading/element__heading.css);
 @import url(../blocks/element/__image/element__image.css);
@@ -25,8 +54,14 @@
 @import url(../blocks/element/__logo-like/element__logo-like.css);
 @import url(../blocks/element/__button-delete/element__button-delete.css);
 @import url(../blocks/element/__logo-like/_active/element__logo-like_active.css);
+
+/* block FOOTER*/
+
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* PopUp*/
+
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_name/popup_name_card-place.css);
 @import url(../blocks/popup/__button/popup__button.css);
