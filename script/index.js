@@ -105,7 +105,7 @@ function closePopUp(popup) {
 };
 
 const handleClosePop = function(event) {
-    if (event.target.classList.contains('popup__button-close')) {
+    if (event.target.classList.contains('popup__button-close') || !event.target.closest('.popup__content')) {
         closePopUp(event.target.closest('.popup'));
         // console.log(`Пользователь закрыл ${event.target.closest('.popup').id}`);
     };
