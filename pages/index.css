@@ -14,10 +14,6 @@
 
 @import url(../blocks/root/root.css);
 
-/* element INPUT*/
-
-@import url(../blocks/input/input.css);
-
 /* block HEADER*/
 
 @import url(../blocks/header/header.css);
@@ -75,3 +71,4 @@
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__image-title/popup__image-title.css);
 @import url(../blocks/popup/__content-card-place/popup__content-card-place.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);

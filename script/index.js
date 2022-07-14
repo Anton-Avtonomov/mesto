@@ -24,17 +24,17 @@ const popUpPlace = document.getElementById('popup-place');
 // Полноразмерный Попап карточки места
 const popUpCardPlace = document.getElementById('popup-card-place');
 // Форма попапа профиля
-const formProfile = document.getElementById('profile-form');
+const formProfile = document.getElementById('form-profile');
 // Форма попапа профиля
-const formPlace = document.getElementById('card-place-form');
+const formPlace = document.getElementById('form-card-place');
 // Значение инпута ИМЕНИ профиля в попапе
-const popUpProfileName = document.querySelector('.popup__input_string_name');
+const popUpProfileName = document.getElementById('input-name');
 // Значение инпута ИНФО профиля в попапе
-const popUpProfileInfo = document.querySelector('.popup__input_string_about-him');
+const popUpProfileInfo = document.getElementById('input-about-him');
 // Инпут подписи фотографии в попАпе добавления новой карточки места
-const inputTitlePhoto = document.querySelector('.popup__input_card-place_title');
+const inputTitlePhoto = document.getElementById('.input-title');
 // Инпут ссылки фотографии в попАпе добавления новой карточки места
-const inputLinkPhoto = document.querySelector('.popup__input_card-place_link');
+const inputLinkPhoto = document.querySelector('input-link');
 // Фото в полноразмерном попапе
 const popUpPhoto = document.querySelector('.popup__image');
 // Подпись к фото в полноразмерном Попапе
