@@ -3,9 +3,9 @@
 const templateCardPlace = document.getElementById('template-card-place').content;
 // Место для добавления карточек
 const blockCardsPlace = document.querySelector('.elements');
-// Кнопка добавления карточки
+// Button добавления карточки
 const buttonOpenPopUpPlace = document.querySelector('.profile__button-add');
-// Кнопка редактирования профиля
+// Button editing profile
 const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
 // Коллекция кнопок закрытия Попапов
 const buttonsClosePopUp = document.querySelectorAll('.popup__button-close');
@@ -40,16 +40,16 @@ const popUpPhoto = document.querySelector('.popup__image');
 // Подпись к фото в полноразмерном Попапе
 const popUpTitlePhoto = document.querySelector('.popup__image-title');
 
-// !Функция открытия попапа
+// !Function opening popup
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    // console.log('Сработала функция открытия попАпа');
+    //console.log('Сработала функция открытия попАпа');
+    //Listener Keystroke
+    document.addEventListener('keydown', keyHandler);
+    //console.log('Добавлен слушатель нажатий клавиш');
 };
 
-// !Открытие попапа профиля
-// Кнопка редактирования профиля
-buttonEditPopUpProfile.addEventListener('click', openPopUpProfile);
-
+// !Opening popup PROFILE
 function openPopUpProfile() {
     openPopup(popUpProfile);
     // Дублируем значения в поля попапа при открытии
@@ -65,13 +65,8 @@ function handleSubmitformProfile(event) {
     closePopUp(popUpProfile);
     // console.log(`Сработал submit в ${popUpProfile.id}!`);
 };
-//Сохранения формы профиля
-formProfile.addEventListener('submit', handleSubmitformProfile);
 
-// !Открытие попапа добавления карточки
-// Кнопка +
-buttonOpenPopUpPlace.addEventListener('click', openPopUpPlace);
-
+// !Opening popup PLACE
 function openPopUpPlace() {
     openPopup(popUpPlace);
     // Reset формы при каждом открытии попапа
@@ -86,9 +81,8 @@ function handleSubmitFormPlace(event) {
     renderNewCardPlace();
     // console.log(`Сработал submit в ${popUpPlace.id}!`);
 };
-formPlace.addEventListener('submit', handleSubmitFormPlace);
 
-// !Открытие попапа карточки места
+// !Оpening popup CARD-PLACE
 function openPopUpCardPlace(event) {
     openPopup(popUpCardPlace);
     popUpPhoto.src = event.target.src;
@@ -97,23 +91,32 @@ function openPopUpCardPlace(event) {
     // console.log(`Пользователь открыл(а) карточку ${event.target.closest('.element').querySelector('.element__title').textContent}`);
 };
 
-// !Закрытие попапов
+// !Closed poups
 // Функция закрытия попапа
 function closePopUp(popup) {
     popup.classList.remove('popup_opened');
     // console.log('Сработала функция закрытия попАпа!');
+    document.removeEventListener('keydown', keyHandler);
+    //console.log('Удален слушатель нажатий клавиш')
+
 };
 
 const handleClosePop = function(event) {
+    //Closed popup by click element closed or click outside popup
     if (event.target.classList.contains('popup__button-close') || !event.target.closest('.popup__content')) {
         closePopUp(event.target.closest('.popup'));
         // console.log(`Пользователь закрыл ${event.target.closest('.popup').id}`);
     };
+
 };
 
-popUps.forEach(function(popup) {
-    popup.addEventListener('click', handleClosePop);
-});
+//Keystroke Handler 
+function keyHandler(event) {
+    if (event.key === 'Escape') {
+        closePopUp(document.querySelector('.popup_opened'));
+    }
+    //console.log(`Пользователь нажал клавишу ${event.key}`);
+}
 
 // !Функция создания карточки места
 function createCardPlace(objectCardPlace) {
@@ -138,7 +141,7 @@ function renderNewCardPlace() {
     blockCardsPlace.prepend(newCardPlace);
     //console.log(`Пользователь добавил новуй карточку места под названием ${newObjectCardPlace.title}`);
 }
-// !Загрузка начальных карточек места
+// !Loading initial cards
 initialCardsPlace.forEach(function(element) {
     //подставляю объект массива в качестве параметра функции по созданию карточки
     const newCardPlace = createCardPlace(element);
@@ -159,13 +162,30 @@ function handleLike(event) {
     // console.log(`Пользователь нажал(а) поставил LIKE карточке ${event.target.closest('.element').querySelector('.element__title').textContent}`);
 };
 
-// ! Вешаем слушатели
+// ! Listeners
+// Button editing profile
+buttonEditPopUpProfile.addEventListener('click', openPopUpProfile);
+
+// Button +
+buttonOpenPopUpPlace.addEventListener('click', openPopUpPlace);
+
+//Save data form profile
+formProfile.addEventListener('submit', handleSubmitformProfile);
+
+//Save data form place
+formPlace.addEventListener('submit', handleSubmitFormPlace);
+
+//Handle closed popup
+popUps.forEach(function(popup) {
+    popup.addEventListener('click', handleClosePop);
+});
+
 function setEventListener(element) {
-    //Кнопка удаления
+    //Button DELETE
     element.querySelector('.element__button-delete').addEventListener('click', handleDelete);
-    // Кнопка LIKE
+    // Button LIKE
     element.querySelector('.element__logo-like').addEventListener('click', handleLike);
-    // Кнопка открытия попапа карточки
+    // Button opening popup CARD-PLACE
     element.querySelector('.element__image').addEventListener('click', openPopUpCardPlace);
     // console.log('Добавлены слушатели: Удаления карточек, Добавления лайка, открытия попАпа карточки места')
 };
