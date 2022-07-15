@@ -32,9 +32,9 @@ const popUpProfileName = document.getElementById('input-name');
 // Значение инпута ИНФО профиля в попапе
 const popUpProfileInfo = document.getElementById('input-about-him');
 // Инпут подписи фотографии в попАпе добавления новой карточки места
-const inputTitlePhoto = document.getElementById('.input-title');
+const inputTitlePhoto = document.getElementById('input-title');
 // Инпут ссылки фотографии в попАпе добавления новой карточки места
-const inputLinkPhoto = document.querySelector('input-link');
+const inputLinkPhoto = document.getElementById('input-link');
 // Фото в полноразмерном попапе
 const popUpPhoto = document.querySelector('.popup__image');
 // Подпись к фото в полноразмерном Попапе
@@ -101,7 +101,7 @@ function closePopUp(popup) {
 
 };
 
-const handleClosePop = function(event) {
+function handleClosePop(event) {
     //Closed popup by click element closed or click outside popup
     if (event.target.classList.contains('popup__button-close') || !event.target.closest('.popup__content')) {
         closePopUp(event.target.closest('.popup'));
@@ -139,7 +139,7 @@ function renderNewCardPlace() {
     const newObjectCardPlace = { link: inputLinkPhoto.value, alt: `Фотография ${inputLinkPhoto.value}`, title: inputTitlePhoto.value }
     const newCardPlace = createCardPlace(newObjectCardPlace);
     blockCardsPlace.prepend(newCardPlace);
-    //console.log(`Пользователь добавил новуй карточку места под названием ${newObjectCardPlace.title}`);
+    //console.log(`Пользователь добавил новуй карточку места под названием '${newObjectCardPlace.title}'`);
 }
 // !Loading initial cards
 initialCardsPlace.forEach(function(element) {

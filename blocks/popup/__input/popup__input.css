@@ -14,6 +14,6 @@
 }
 
 .popup__input:focus {
-    outline: 2px solid rgba(4, 76, 600, 0.716);
-    border-radius: 5px;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
