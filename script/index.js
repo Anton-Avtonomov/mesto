@@ -128,7 +128,7 @@ function createCardPlace(objectCardPlace) {
     titleCardElement.alt = objectCardPlace.alt;
     htmlCardElement.querySelector('.element__title').textContent = objectCardPlace.title;
     //вешаю слушатели на параметр функции
-    setEventListener(htmlCardElement);
+    setEventListenerForCardPlace(htmlCardElement);
     //console.log('Выполнена функция создания карточки');
     //Возвращаю заполенную карточку
     return htmlCardElement;
@@ -142,9 +142,9 @@ function renderNewCardPlace() {
     //console.log(`Пользователь добавил новуй карточку места под названием '${newObjectCardPlace.title}'`);
 }
 // !Loading initial cards
-initialCardsPlace.forEach(function(element) {
+initialCardsPlace.forEach(function(objectCardPlace) {
     //подставляю объект массива в качестве параметра функции по созданию карточки
-    const newCardPlace = createCardPlace(element);
+    const newCardPlace = createCardPlace(objectCardPlace);
     //Добавляю готовую карточку в DOM
     blockCardsPlace.prepend(newCardPlace);
     //console.log('Выполнена функция ДОБАВЛЕНИЯ карточки');
@@ -180,7 +180,7 @@ popUps.forEach(function(popup) {
     popup.addEventListener('click', handleClosePop);
 });
 
-function setEventListener(element) {
+function setEventListenerForCardPlace(element) {
     //Button DELETE
     element.querySelector('.element__button-delete').addEventListener('click', handleDelete);
     // Button LIKE
