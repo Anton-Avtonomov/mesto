@@ -3,14 +3,11 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    padding-bottom: 13px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    margin: 30px 0 0 0;
-}
-
-.popup__input:first-child {
-    margin: 54px 0 0 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0 13px 0;
 }
 
 .popup__input:focus {
@@ -20,4 +17,6 @@
 
 .popup__input:invalid {
     border-bottom: 1px solid rgba(250, 0, 0, 0.4);
+    color: red;
 }
+

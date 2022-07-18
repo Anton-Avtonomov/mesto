@@ -27,15 +27,14 @@
                     <div class="profile__wrapper-name">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__button-edit" type="button">
-							<img class="profile__logo-edit" src="./image/profile/pen.svg" alt="Изображение ручки">
-						</button>
+                            <img class="profile__logo-edit" src="./image/profile/pen.svg" alt="Изображение ручки">
+                        </button>
                     </div>
                     <p class="profile__about-him">Исследователь океана</p>
                 </div>
                 <button class="profile__button-add" type="button">
-					<img class="profile__logo-add"
-						src="./image/profile/add-button.svg" alt="Символ сложения">
-					</button>
+                    <img class="profile__logo-add" src="./image/profile/add-button.svg" alt="Символ сложения">
+                </button>
             </section>
 
             <section class="elements"></section>
@@ -48,13 +47,19 @@
         <section class="popup" id="popup-profile">
             <div class="popup__container">
                 <div class="popup__content">
-                    <form class="popup__form" name="profile" id="form-profile" action="#" method="get" >
+                    <form class="popup__form" name="profile" id="form-profile" action="#" method="get">
                         <h2 class="popup__heading">Редактировать профиль</h2>
-                        <input class="popup__input" id="input-name" name="name" type="text" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
-                        <span class="popup__input-error" id="input-name-error">Минимальное кол-во символов 2, максимальное 40!</span>
-                        <input class="popup__input" id="input-about-him" name="about-him" type="text" value="Исследователь океана" required minlength="2" maxlength="200">
-                        <span class="popup__input-error" id="input-about-him-error">Минимальное кол-во символов 2, максимальное 200!</span>
-                        <button type="submit" class="popup__button" id="button-save">Сохранить</button>
+                        <div class="popup__wrapper-input">
+                            <input class="popup__input" id="input-name" name="name" type="text" value="Жак-Ив Кусто"
+                                required minlength="2" maxlength="40">
+                            <span class="popup__input-error" id="input-name-error">бла бла</span>
+                        </div>
+                        <div class="popup__wrapper-input">
+                            <input class="popup__input" id="input-about-him" name="about-him" type="text"
+                                value="Исследователь океана" required minlength="2" maxlength="200">
+                            <span class="popup__input-error" id="input-about-him-error">бла бла</span>
+                        </div>
+                        <button type="submit" class="popup__button popup__button_submit">Сохранить</button>
                     </form>
                     <button class="popup__button-close" type="button"></button>
                 </div>
@@ -66,11 +71,17 @@
                 <div class="popup__content">
                     <form class="popup__form" id="form-card-place" action="#" method="get" name="place">
                         <h2 class="popup__heading">Новое место</h2>
-                        <input class="popup__input" id="input-title" name="title" type="text" placeholder="Название" required minlength="2" maxlength="30">
-                        <span class="popup__input-error" id="input-title-error">Минимальное кол-во символов 2, максимальное 30!</span>
-                        <input class="popup__input" id="input-link" name="link" type="url" placeholder="Ссылка на картинку" required>
-                        <span class="popup__input-error" id="input-link-error">Необходимо указать ссылку.</span>
-                        <button type="submit" class="popup__button" id="button-creathe">Создать</button>
+                        <div class="popup__wrapper-input">
+                            <input class="popup__input" id="input-title" name="title" type="text" placeholder="Название"
+                                required minlength="2" maxlength="30">
+                            <span class="popup__input-error" id="input-title-error">бла бла</span>
+                        </div>
+                        <div class="popup__wrapper-input">
+                            <input class="popup__input" id="input-link" name="link" type="url"
+                                placeholder="Ссылка на картинку" required>
+                            <span class="popup__input-error" id="input-link-error">бла бла</span>
+                        </div>
+                        <button type="submit" class="popup__button popup__button_submit">Создать</button>
                     </form>
                     <button class="popup__button-close" type="button" autofocus></button>
                 </div>
@@ -88,21 +99,21 @@
         </section>
 
         <template class="template" id="template-card-place">
-			<div class="element">
-				<img class="element__image" src="#" alt="Заглушка">
-				<div class="element__heading">
-					<h2 class="element__title">Заголовок template card place</h2>
-					<button class="element__button-like" type="button">
-						<img class="element__logo-like" src="./image/elements/logo-like.svg"
-							alt="Изображение кнопки лайка">
-					</button>
-					<button class="element__button-delete">
-						<img class="element__logo-delete" src="./image/elements/logo-delete.png"
-							alt="Изображение мусорной корзины">
-					</button>
-				</div>
-			</div>
-		</template>
+            <div class="element">
+                <img class="element__image" src="#" alt="Заглушка">
+                <div class="element__heading">
+                    <h2 class="element__title">Заголовок template card place</h2>
+                    <button class="element__button-like" type="button">
+                        <img class="element__logo-like" src="./image/elements/logo-like.svg"
+                            alt="Изображение кнопки лайка">
+                    </button>
+                    <button class="element__button-delete">
+                        <img class="element__logo-delete" src="./image/elements/logo-delete.png"
+                            alt="Изображение мусорной корзины">
+                    </button>
+                </div>
+            </div>
+        </template>
     </div>
     <script src="./script/initial-cards.js"></script>
     <script src="./script/index.js"></script>

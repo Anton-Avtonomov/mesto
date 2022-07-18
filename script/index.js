@@ -85,6 +85,7 @@ function handleSubmitFormPlace(event) {
 // !Оpening popup CARD-PLACE
 function openPopUpCardPlace(event) {
     openPopup(popUpCardPlace);
+    popUpPlace.reset();
     popUpPhoto.src = event.target.src;
     popUpPhoto.alt = event.target.alt;
     popUpTitlePhoto.textContent = event.target.closest('.element').querySelector('.element__title').textContent;
