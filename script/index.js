@@ -18,23 +18,23 @@ const profileInfo = document.querySelector('.profile__about-him');
 // Коллекция попАпов
 const popUps = document.querySelectorAll('.popup');
 // ПопАп профиля
-const popUpProfile = document.getElementById('popup-profile');
+const popUpProfile = document.querySelector('#popup-profile');
 // ПопАп добавления карточки
-const popUpPlace = document.getElementById('popup-place');
+const popUpPlace = document.querySelector('#popup-place');
 // Полноразмерный Попап карточки места
-const popUpCardPlace = document.getElementById('popup-card-place');
+const popUpCardPlace = document.querySelector('#popup-card-place');
 // Форма попапа профиля
-const formProfile = document.getElementById('form-profile');
+const formProfile = document.querySelector('#form-profile');
 // Форма попапа профиля
-const formPlace = document.getElementById('form-card-place');
+const formPlace = document.querySelector('#form-card-place');
 // Значение инпута ИМЕНИ профиля в попапе
-const popUpProfileName = document.getElementById('input-name');
+const popUpProfileName = document.querySelector('#input-name');
 // Значение инпута ИНФО профиля в попапе
-const popUpProfileInfo = document.getElementById('input-about-him');
+const popUpProfileInfo = document.querySelector('#input-about-him');
 // Инпут подписи фотографии в попАпе добавления новой карточки места
-const inputTitlePhoto = document.getElementById('input-title');
+const inputTitlePhoto = document.querySelector('#input-title');
 // Инпут ссылки фотографии в попАпе добавления новой карточки места
-const inputLinkPhoto = document.getElementById('input-link');
+const inputLinkPhoto = document.querySelector('#input-link');
 // Фото в полноразмерном попапе
 const popUpPhoto = document.querySelector('.popup__image');
 // Подпись к фото в полноразмерном Попапе
@@ -63,7 +63,7 @@ function handleSubmitformProfile(event) {
     profileName.textContent = popUpProfileName.value;
     profileInfo.textContent = popUpProfileInfo.value;
     closePopUp(popUpProfile);
-    // console.log(`Сработал submit в ${popUpProfile.id}!`);
+    console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
 };
 
 // !Opening popup PLACE
@@ -79,13 +79,13 @@ function handleSubmitFormPlace(event) {
     event.preventDefault();
     closePopUp(popUpPlace);
     renderNewCardPlace();
-    // console.log(`Сработал submit в ${popUpPlace.id}!`);
+    console.log(`У '${popUpPlace.id}' произошло событие SUBMIT-1`);
+
 };
 
 // !Оpening popup CARD-PLACE
 function openPopUpCardPlace(event) {
     openPopup(popUpCardPlace);
-    popUpPlace.reset();
     popUpPhoto.src = event.target.src;
     popUpPhoto.alt = event.target.alt;
     popUpTitlePhoto.textContent = event.target.closest('.element').querySelector('.element__title').textContent;
