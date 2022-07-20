@@ -9,7 +9,7 @@ const showInputError = function(formElement, inputElement, errorMessage) {
     //Показываю элемент (span) сообщения с ошибкой
     errorElement.classList.add('popup__input-error_active');
     //Проверка
-    console.log('Выполнена функция ShowInputError');
+    // console.log('Выполнена функция ShowInputError');
 }
 
 //Показывает ошибку

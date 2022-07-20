@@ -91,7 +91,7 @@ function resetErrorInputsValidate(formElement) {
     inputsErrorElement.forEach(function(inputErrorElement) {
         inputErrorElement.classList.remove('popup__input-error_active');
     })
-    console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
+    // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
 }
 
 //Сохранения формы места
