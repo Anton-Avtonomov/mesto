@@ -1,6 +1,3 @@
 .popup__input-error_active {
     display: inline;
-    position: absolute;
-    left: 0;
-    top: calc(100% + 5px);
 }

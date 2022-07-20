@@ -52,6 +52,9 @@ function openPopup(popup) {
 // !Opening popup PROFILE
 function openPopUpProfile() {
     openPopup(popUpProfile);
+    //Проверка состояния кнопки submit
+    toggleButtonState(formProfile);
+    resetErrorInputsValidate(formProfile);
     // Дублируем значения в поля попапа при открытии
     popUpProfileName.value = profileName.textContent;
     popUpProfileInfo.value = profileInfo.textContent;
@@ -69,10 +72,27 @@ function handleSubmitformProfile(event) {
 // !Opening popup PLACE
 function openPopUpPlace() {
     openPopup(popUpPlace);
+    //Проверка состояния кнопки submit
+    toggleButtonState(formPlace);
+    //Сброс ошибок
+    resetErrorInputsValidate(formPlace);
     // Reset формы при каждом открытии попапа
     formPlace.reset();
     // console.log(`Пользователь открыл(а) ${popUpPlace.id}`);
 };
+
+//Функция сброса ошибок
+function resetErrorInputsValidate(formElement) {
+    const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
+    const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
+    inputsElement.forEach(function(inputElement) {
+        inputElement.classList.remove('popup__input_type_error');
+    });
+    inputsErrorElement.forEach(function(inputErrorElement) {
+        inputErrorElement.classList.remove('popup__input-error_active');
+    })
+    console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
+}
 
 //Сохранения формы места
 function handleSubmitFormPlace(event) {
@@ -108,7 +128,6 @@ function handleClosePop(event) {
         closePopUp(event.target.closest('.popup'));
         // console.log(`Пользователь закрыл ${event.target.closest('.popup').id}`);
     };
-
 };
 
 //Keystroke Handler 
