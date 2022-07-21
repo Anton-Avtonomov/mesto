@@ -53,7 +53,7 @@ function openPopup(popup) {
 function openPopUpProfile() {
     openPopup(popUpProfile);
     //Проверка состояния кнопки submit
-    toggleButtonState(formProfile);
+    toggleButtonState(formProfile, config);
     resetErrorInputsValidate(formProfile);
     // Дублируем значения в поля попапа при открытии
     popUpProfileName.value = profileName.textContent;
@@ -66,7 +66,7 @@ function handleSubmitformProfile(event) {
     profileName.textContent = popUpProfileName.value;
     profileInfo.textContent = popUpProfileInfo.value;
     closePopUp(popUpProfile);
-    console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
+    // console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
 };
 
 // !Opening popup PLACE
@@ -77,7 +77,7 @@ function openPopUpPlace() {
     // Reset формы при каждом открытии попапа
     formPlace.reset();
     //Проверка состояния кнопки submit
-    toggleButtonState(formPlace);
+    toggleButtonState(formPlace, config);
     // console.log(`Пользователь открыл(а) ${popUpPlace.id}`);
 };
 
@@ -85,10 +85,10 @@ function openPopUpPlace() {
 function resetErrorInputsValidate(formElement) {
     const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
     const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
-    inputsElement.forEach(function(inputElement) {
+    inputsElement.forEach(function (inputElement) {
         inputElement.classList.remove('popup__input_type_error');
     });
-    inputsErrorElement.forEach(function(inputErrorElement) {
+    inputsErrorElement.forEach(function (inputErrorElement) {
         inputErrorElement.classList.remove('popup__input-error_active');
     })
     // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
@@ -124,9 +124,15 @@ function closePopUp(popup) {
 
 function handleClosePop(event) {
     //Closed popup by click element closed or click outside popup
-    if (event.target.classList.contains('popup__button-close') || !event.target.closest('.popup__content') && !event.target.closest('.popup__content-card-place')) {
+    if (event.target.classList.contains('popup__button-close')) {
         closePopUp(event.target.closest('.popup'));
         // console.log(`Пользователь закрыл ${event.target.closest('.popup').id}`);
+    };
+};
+
+function clickByOverlay(event) {
+    if (!event.target.closest('.popup__content') && !event.target.closest('.popup__content-card-place')) {
+        closePopUp(event.target.closest('.popup'));
     };
 };
 
@@ -162,7 +168,7 @@ function renderNewCardPlace() {
     //console.log(`Пользователь добавил новуй карточку места под названием '${newObjectCardPlace.title}'`);
 }
 // !Loading initial cards
-initialCardsPlace.forEach(function(objectCardPlace) {
+initialCardsPlace.forEach(function (objectCardPlace) {
     //подставляю объект массива в качестве параметра функции по созданию карточки
     const newCardPlace = createCardPlace(objectCardPlace);
     //Добавляю готовую карточку в DOM
@@ -196,9 +202,11 @@ formProfile.addEventListener('submit', handleSubmitformProfile);
 formPlace.addEventListener('submit', handleSubmitFormPlace);
 
 //Handle closed popup
-popUps.forEach(function(popup) {
+popUps.forEach(function (popup) {
     popup.addEventListener('click', handleClosePop);
+    popup.addEventListener('mousedown', clickByOverlay);
 });
+
 
 function setEventListenerForCardPlace(element) {
     //Button DELETE
