@@ -72,12 +72,12 @@ function handleSubmitformProfile(event) {
 // !Opening popup PLACE
 function openPopUpPlace() {
     openPopup(popUpPlace);
-    //Проверка состояния кнопки submit
-    toggleButtonState(formPlace);
     //Сброс ошибок
     resetErrorInputsValidate(formPlace);
     // Reset формы при каждом открытии попапа
     formPlace.reset();
+    //Проверка состояния кнопки submit
+    toggleButtonState(formPlace);
     // console.log(`Пользователь открыл(а) ${popUpPlace.id}`);
 };
 
@@ -124,7 +124,7 @@ function closePopUp(popup) {
 
 function handleClosePop(event) {
     //Closed popup by click element closed or click outside popup
-    if (event.target.classList.contains('popup__button-close') || !event.target.closest('.popup__content')) {
+    if (event.target.classList.contains('popup__button-close') || !event.target.closest('.popup__content') && !event.target.closest('.popup__content-card-place')) {
         closePopUp(event.target.closest('.popup'));
         // console.log(`Пользователь закрыл ${event.target.closest('.popup').id}`);
     };

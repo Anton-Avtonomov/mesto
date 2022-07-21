@@ -1,3 +1,20 @@
+const objectConfigPopUp = {
+    // Селектор формы
+    formSelector: '.popup__form',
+    // Селектор инпута
+    inputSelector: '.popup__input',
+    // Класс ошибки для инпута
+    inputErrorClass: 'popup__input_type_error',
+    // Селектор инпута с ошибкой
+    inputErrorSelector: '.popup__input-error',
+     // Класс активации инпута c ошибкой
+    errorClass: 'popup__input-error_active',
+    // Кнопка submit
+    submitButtonSelector: '.popup__button-submit',
+    // Класс дезактивации кнопки
+    inactiveButtonClass: '  popup__button_disabled',
+}
+
 //Скрывает ошибку
 const showInputError = function(formElement, inputElement, errorMessage) {
     //Нахожу сообщение с ошибкой для выбранного инпута
@@ -61,7 +78,7 @@ const enableValidation = function() {
     });
 };
 
-enableValidation();
+enableValidation(objectConfigPopUp);
 
 ////Переключает состояние кнопки
 const toggleButtonState = function(formElement) {
