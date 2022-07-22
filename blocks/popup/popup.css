@@ -7,8 +7,6 @@
     left: 0;
     background: rgba(0, 0, 0, 0.7);
     visibility: hidden;
-    -webkit-transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
     -webkit-transition-duration: 0.6s;
     -o-transition-duration: 0.6s;
     transition-duration: 0.6s;

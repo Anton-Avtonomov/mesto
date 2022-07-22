@@ -43,6 +43,8 @@ const popUpTitlePhoto = document.querySelector('.popup__image-title');
 // !Function opening popup
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    const popUpContent = popup.querySelector('.popup__content_disabled');
+    popUpContent.classList.add('popup__content_opened');
     //console.log('Сработала функция открытия попАпа');
     //Listener Keystroke
     document.addEventListener('keydown', keyHandler);
@@ -117,6 +119,8 @@ function openPopUpCardPlace(event) {
 function closePopUp(popup) {
     popup.classList.remove('popup_opened');
     // console.log('Сработала функция закрытия попАпа!');
+    const popUpContent = popup.querySelector('.popup__content_disabled');
+    popUpContent.classList.remove('popup__content_opened');
     document.removeEventListener('keydown', keyHandler);
     //console.log('Удален слушатель нажатий клавиш')
 
