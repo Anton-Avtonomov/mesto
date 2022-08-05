@@ -1,16 +1,15 @@
+import Card from './Card.js';
+import { initialCardsPlace as defaultCards } from './initial-cards.js';
+
 // !КОНСТАНТЫ и ПЕРЕМЕННЫЕ
 // Cодержимое template новой карточки
 const templateCardPlace = document.getElementById('template-card-place').content;
 // Место для добавления карточек
-const blockCardsPlace = document.querySelector('.elements');
+const containerCards = document.querySelector('.elements');
 // Button добавления карточки
 const buttonOpenPopUpPlace = document.querySelector('.profile__button-add');
 // Button editing profile
 const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
-// Коллекция кнопок закрытия Попапов
-const buttonsClosePopUp = document.querySelectorAll('.popup__button-close');
-// Коллекция кнопок открытия попАпов карточек мест
-const buttonsShowPopUpCardPlace = document.querySelectorAll('.element__image');
 // Имя профиля
 const profileName = document.querySelector('.profile__name');
 // Инфо профиля
@@ -21,8 +20,6 @@ const popUps = document.querySelectorAll('.popup');
 const popUpProfile = document.querySelector('#popup-profile');
 // ПопАп добавления карточки
 const popUpPlace = document.querySelector('#popup-place');
-// Полноразмерный Попап карточки места
-const popUpCardPlace = document.querySelector('#popup-card-place');
 // Форма попапа профиля
 const formProfile = document.querySelector('#form-profile');
 // Форма попапа профиля
@@ -35,13 +32,9 @@ const popUpProfileInfo = document.querySelector('#input-about-him');
 const inputTitlePhoto = document.querySelector('#input-title');
 // Инпут ссылки фотографии в попАпе добавления новой карточки места
 const inputLinkPhoto = document.querySelector('#input-link');
-// Фото в полноразмерном попапе
-const popUpPhoto = document.querySelector('.popup__image');
-// Подпись к фото в полноразмерном Попапе
-const popUpTitlePhoto = document.querySelector('.popup__image-title');
 
 // !Function opening popup
-function openPopup(popup) {
+export function openPopup(popup) {
     popup.classList.add('popup_opened');
     const popUpContent = popup.querySelector('.popup__content_disabled');
     popUpContent.classList.add('popup__content_opened');
@@ -83,7 +76,7 @@ function openPopUpPlace() {
     // console.log(`Пользователь открыл(а) ${popUpPlace.id}`);
 };
 
-//Функция сброса ошибок
+// !Функция сброса ошибок
 function resetErrorInputsValidate(formElement) {
     const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
     const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
@@ -96,26 +89,16 @@ function resetErrorInputsValidate(formElement) {
     // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
 }
 
-//Сохранения формы места
+// !Сохранения формы места
 function handleSubmitFormPlace(event) {
     event.preventDefault();
     closePopUp(popUpPlace);
     renderNewCardPlace();
-    console.log(`У '${popUpPlace.id}' произошло событие SUBMIT-1`);
+    // console.log(`У '${popUpPlace.id}' произошло событие SUBMIT-1`);
 
-};
-
-// !Оpening popup CARD-PLACE
-function openPopUpCardPlace(event) {
-    openPopup(popUpCardPlace);
-    popUpPhoto.src = event.target.src;
-    popUpPhoto.alt = event.target.alt;
-    popUpTitlePhoto.textContent = event.target.closest('.element').querySelector('.element__title').textContent;
-    // console.log(`Пользователь открыл(а) карточку ${event.target.closest('.element').querySelector('.element__title').textContent}`);
 };
 
 // !Closed poups
-// Функция закрытия попапа
 function closePopUp(popup) {
     popup.classList.remove('popup_opened');
     // console.log('Сработала функция закрытия попАпа!');
@@ -134,20 +117,20 @@ function handleClosePop(event) {
     };
 };
 
+// Closing popUp by click for overlay
 function clickByOverlay(event) {
     if (!event.target.closest('.popup__content') && !event.target.closest('.popup__content-card-place')) {
         closePopUp(event.target.closest('.popup'));
     };
 };
 
-//Keystroke Handler 
+// !Keystroke Handler 
 function keyHandler(event) {
     if (event.key === 'Escape') {
         closePopUp(document.querySelector('.popup_opened'));
     }
     //console.log(`Пользователь нажал клавишу ${event.key}`);
 }
-
 // !Функция создания карточки места
 function createCardPlace(objectCardPlace) {
     //cоздаю копию template карточки
@@ -164,21 +147,22 @@ function createCardPlace(objectCardPlace) {
     return htmlCardElement;
 }
 
+// !Фунция добавления карточки в контэйнер
+function addCardPlace(objCardPlace) {
+    containerCards.prepend(objCardPlace);
+}
+
 //Функция добавления новых карточек места на основе данных форм инпутов попапа Place
 function renderNewCardPlace() {
-    const newObjectCardPlace = { link: inputLinkPhoto.value, alt: `Фотография ${inputLinkPhoto.value}`, title: inputTitlePhoto.value }
+    const newObjectCardPlace = {
+        link: inputLinkPhoto.value,
+        alt: `Фотография ${inputLinkPhoto.value}`,
+        title: inputTitlePhoto.value,
+    }
     const newCardPlace = createCardPlace(newObjectCardPlace);
-    blockCardsPlace.prepend(newCardPlace);
+    addCardPlace(newCardPlace);
     //console.log(`Пользователь добавил новуй карточку места под названием '${newObjectCardPlace.title}'`);
 }
-// !Loading initial cards
-initialCardsPlace.forEach(function (objectCardPlace) {
-    //подставляю объект массива в качестве параметра функции по созданию карточки
-    const newCardPlace = createCardPlace(objectCardPlace);
-    //Добавляю готовую карточку в DOM
-    blockCardsPlace.prepend(newCardPlace);
-    //console.log('Выполнена функция ДОБАВЛЕНИЯ карточки');
-});
 
 // !Функция удаления карточки по event
 function handleDelete(event) {
@@ -202,7 +186,7 @@ buttonOpenPopUpPlace.addEventListener('click', openPopUpPlace);
 //Save data form profile
 formProfile.addEventListener('submit', handleSubmitformProfile);
 
-//Save data form place
+// Save data form place
 formPlace.addEventListener('submit', handleSubmitFormPlace);
 
 //Handle closed popup
@@ -210,7 +194,6 @@ popUps.forEach(function (popup) {
     popup.addEventListener('click', handleClosePop);
     popup.addEventListener('mousedown', clickByOverlay);
 });
-
 
 function setEventListenerForCardPlace(element) {
     //Button DELETE
@@ -220,4 +203,11 @@ function setEventListenerForCardPlace(element) {
     // Button opening popup CARD-PLACE
     element.querySelector('.element__image').addEventListener('click', openPopUpCardPlace);
     // console.log('Добавлены слушатели: Удаления карточек, Добавления лайка, открытия попАпа карточки места')
-};
+    };
+
+// ! Loading default cards
+defaultCards.forEach(function (defaultCard) {
+    const card = new Card(defaultCard.title, defaultCard.link, defaultCard.alt, '#template-card-place');
+    const cardElement = card.generateCard();
+    addCardPlace(cardElement);
+});

@@ -84,7 +84,7 @@ const enableValidation = function (valueBeforeRest) {
 
 enableValidation(config);
 
-////Переключает состояние кнопки
+//Переключает состояние кнопки
 const toggleButtonState = function (formElement, { submitButtonSelector, inactiveButtonClass }) {
     const buttonElement = formElement.querySelector(submitButtonSelector);
     if (formElement.checkValidity()) {
@@ -97,3 +97,7 @@ const toggleButtonState = function (formElement, { submitButtonSelector, inactiv
         //console.log(`Кнопка '${buttonElement.name}' НЕ активна`);
     }
 }
+
+// class FormValidaor {
+//     constructor(elementValidation, formSelecor)
+// }

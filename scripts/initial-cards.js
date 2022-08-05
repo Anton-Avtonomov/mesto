@@ -61,3 +61,5 @@ const initialCardsPlace = [
         alt: 'Фотография гор в Дагетане РФ',
     },
 ];
+
+export { initialCardsPlace };
