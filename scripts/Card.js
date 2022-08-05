@@ -1,10 +1,10 @@
 import { openPopup } from './index.js';
 
 export default class Card {
-	constructor(title, link, alt, templateSelector) {
-		this._title = title;
-		this._image = link;
-		this._altImage = alt;
+	constructor(objNewCard, templateSelector) {
+		this._title = objNewCard.title;
+		this._image = objNewCard.link;
+		this._altImage = objNewCard.alt;
 		this._templateSelector = templateSelector;
 	}
 

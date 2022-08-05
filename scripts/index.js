@@ -1,12 +1,13 @@
 import Card from './Card.js';
-import { initialCardsPlace as defaultCards } from './initial-cards.js';
+import {
+    initialCardsPlace as defaultCards
+} from './initial-cards.js';
+import FormValidator from './FormValidator.js';
 
 // !КОНСТАНТЫ и ПЕРЕМЕННЫЕ
-// Cодержимое template новой карточки
-const templateCardPlace = document.getElementById('template-card-place').content;
 // Место для добавления карточек
 const containerCards = document.querySelector('.elements');
-// Button добавления карточки
+// Button adding card
 const buttonOpenPopUpPlace = document.querySelector('.profile__button-add');
 // Button editing profile
 const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
@@ -28,10 +29,23 @@ const formPlace = document.querySelector('#form-card-place');
 const popUpProfileName = document.querySelector('#input-name');
 // Значение инпута ИНФО профиля в попапе
 const popUpProfileInfo = document.querySelector('#input-about-him');
-// Инпут подписи фотографии в попАпе добавления новой карточки места
-const inputTitlePhoto = document.querySelector('#input-title');
-// Инпут ссылки фотографии в попАпе добавления новой карточки места
-const inputLinkPhoto = document.querySelector('#input-link');
+// Объект с селекторами для валидации
+const config = {
+    // Селектор формы
+    formSelector: '.popup__form',
+    // Селектор инпута
+    inputSelector: '.popup__input',
+    // Класс ошибки для инпута
+    inputErrorClass: 'popup__input_type_error',
+    // Селектор инпута с ошибкой
+    inputErrorSelector: '.popup__input-error',
+    // Класс активации инпута c ошибкой
+    errorClass: 'popup__input-error_active',
+    // Кнопка submit
+    submitButtonSelector: '.popup__button_submit',
+    // Класс дезактивации кнопки
+    inactiveButtonClass: 'popup__button_disabled',
+}
 
 // !Function opening popup
 export function openPopup(popup) {
@@ -56,14 +70,6 @@ function openPopUpProfile() {
     // console.log('Сработала функция открытия попАпа профиля')
 };
 
-function handleSubmitformProfile(event) {
-    event.preventDefault();
-    profileName.textContent = popUpProfileName.value;
-    profileInfo.textContent = popUpProfileInfo.value;
-    closePopUp(popUpProfile);
-    // console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
-};
-
 // !Opening popup PLACE
 function openPopUpPlace() {
     openPopup(popUpPlace);
@@ -76,24 +82,10 @@ function openPopUpPlace() {
     // console.log(`Пользователь открыл(а) ${popUpPlace.id}`);
 };
 
-// !Функция сброса ошибок
-function resetErrorInputsValidate(formElement) {
-    const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
-    const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
-    inputsElement.forEach(function (inputElement) {
-        inputElement.classList.remove('popup__input_type_error');
-    });
-    inputsErrorElement.forEach(function (inputErrorElement) {
-        inputErrorElement.classList.remove('popup__input-error_active');
-    })
-    // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
-}
-
 // !Сохранения формы места
 function handleSubmitFormPlace(event) {
     event.preventDefault();
     closePopUp(popUpPlace);
-    renderNewCardPlace();
     // console.log(`У '${popUpPlace.id}' произошло событие SUBMIT-1`);
 
 };
@@ -106,7 +98,6 @@ function closePopUp(popup) {
     popUpContent.classList.remove('popup__content_opened');
     document.removeEventListener('keydown', keyHandler);
     //console.log('Удален слушатель нажатий клавиш')
-
 };
 
 function handleClosePop(event) {
@@ -131,49 +122,32 @@ function keyHandler(event) {
     }
     //console.log(`Пользователь нажал клавишу ${event.key}`);
 }
-// !Функция создания карточки места
-function createCardPlace(objectCardPlace) {
-    //cоздаю копию template карточки
-    const htmlCardElement = templateCardPlace.cloneNode(true);
-    //нахожу нужные элементы template им значения атрибутов от параметра функции
-    const titleCardElement = htmlCardElement.querySelector('.element__image');
-    titleCardElement.src = objectCardPlace.link;
-    titleCardElement.alt = objectCardPlace.alt;
-    htmlCardElement.querySelector('.element__title').textContent = objectCardPlace.title;
-    //вешаю слушатели на параметр функции
-    setEventListenerForCardPlace(htmlCardElement);
-    //console.log('Выполнена функция создания карточки');
-    //Возвращаю заполенную карточку
-    return htmlCardElement;
-}
+
+// ! Loading cards
+defaultCards.forEach(function (defaultCard) {
+    const card = new Card(defaultCard, '#template-card-place');
+    const cardElement = card.generateCard();
+    addCardPlace(cardElement);
+});
+
+document.querySelector('#button-create-card-place').addEventListener('click', function () {
+    const card = new Card(creatheObjNewCard(), '#template-card-place');
+    const cardElement = card.generateCard();
+    addCardPlace(cardElement);
+});
 
 // !Фунция добавления карточки в контэйнер
-function addCardPlace(objCardPlace) {
-    containerCards.prepend(objCardPlace);
+function addCardPlace(objCard) {
+    containerCards.prepend(objCard);
 }
 
-//Функция добавления новых карточек места на основе данных форм инпутов попапа Place
-function renderNewCardPlace() {
-    const newObjectCardPlace = {
-        link: inputLinkPhoto.value,
-        alt: `Фотография ${inputLinkPhoto.value}`,
-        title: inputTitlePhoto.value,
-    }
-    const newCardPlace = createCardPlace(newObjectCardPlace);
-    addCardPlace(newCardPlace);
-    //console.log(`Пользователь добавил новуй карточку места под названием '${newObjectCardPlace.title}'`);
-}
-
-// !Функция удаления карточки по event
-function handleDelete(event) {
-    event.target.closest('.element').remove();
-    // console.log(`Пользователь нажал(а) на кнопку удаления карточки ${event.target.closest('.element').querySelector('.element__title').textContent}`);
-};
-
-// !Функция отметки like карточки по event
-function handleLike(event) {
-    event.target.classList.toggle('element__logo-like_active');
-    // console.log(`Пользователь нажал(а) поставил LIKE карточке ${event.target.closest('.element').querySelector('.element__title').textContent}`);
+function creatheObjNewCard() {
+    const newCard = {
+        link: document.querySelector('#input-link').value,
+        alt: `Фотография ${document.querySelector('#input-title').value}`,
+        title: document.querySelector('#input-title').value,
+    };
+    return newCard;
 };
 
 // ! Listeners
@@ -195,19 +169,24 @@ popUps.forEach(function (popup) {
     popup.addEventListener('mousedown', clickByOverlay);
 });
 
-function setEventListenerForCardPlace(element) {
-    //Button DELETE
-    element.querySelector('.element__button-delete').addEventListener('click', handleDelete);
-    // Button LIKE
-    element.querySelector('.element__logo-like').addEventListener('click', handleLike);
-    // Button opening popup CARD-PLACE
-    element.querySelector('.element__image').addEventListener('click', openPopUpCardPlace);
-    // console.log('Добавлены слушатели: Удаления карточек, Добавления лайка, открытия попАпа карточки места')
-    };
+//  ! Валидация
+function handleSubmitformProfile(event) {
+    event.preventDefault();
+    profileName.textContent = popUpProfileName.value;
+    profileInfo.textContent = popUpProfileInfo.value;
+    closePopUp(popUpProfile);
+    // console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
+};
 
-// ! Loading default cards
-defaultCards.forEach(function (defaultCard) {
-    const card = new Card(defaultCard.title, defaultCard.link, defaultCard.alt, '#template-card-place');
-    const cardElement = card.generateCard();
-    addCardPlace(cardElement);
-});
+// !Функция сброса ошибок
+function resetErrorInputsValidate(formElement) {
+    const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
+    const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
+    inputsElement.forEach(function (inputElement) {
+        inputElement.classList.remove('popup__input_type_error');
+    });
+    inputsErrorElement.forEach(function (inputErrorElement) {
+        inputErrorElement.classList.remove('popup__input-error_active');
+    })
+    // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
+}
