@@ -21,7 +21,7 @@
     color: red;
 }*/
 
-.popup__input_type_error {
+.popup__input_error {
     border-bottom-color: rgba(250, 0, 0, 0.4);
     color: red;
 }

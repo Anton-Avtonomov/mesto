@@ -1,7 +1,5 @@
 import Card from './Card.js';
-import {
-    initialCardsPlace as defaultCards
-} from './initial-cards.js';
+import { initialCardsPlace as defaultCards } from './initial-cards.js';
 import FormValidator from './FormValidator.js';
 
 // !КОНСТАНТЫ и ПЕРЕМЕННЫЕ
@@ -36,21 +34,22 @@ const config = {
     // Селектор инпута
     inputSelector: '.popup__input',
     // Класс ошибки для инпута
-    inputErrorClass: 'popup__input_type_error',
+    inputErrorClass: 'popup__input_error',
     // Селектор инпута с ошибкой
     inputErrorSelector: '.popup__input-error',
-    // Класс активации инпута c ошибкой
-    errorClass: 'popup__input-error_active',
     // Кнопка submit
-    submitButtonSelector: '.popup__button_submit',
+    submitButtonSelector: '.popup__button',
     // Класс дезактивации кнопки
     inactiveButtonClass: 'popup__button_disabled',
 }
-
+// Экземпляр валидации формы profile
+const profileValidator = new FormValidator(config, formProfile);
+// Экземпляр валидации формы place
+const placeValidator = new FormValidator(config, formPlace);
 // !Function opening popup
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
-    const popUpContent = popup.querySelector('.popup__content_disabled');
+    const popUpContent = popup.querySelector('.popup__container').firstElementChild;
     popUpContent.classList.add('popup__content_opened');
     //console.log('Сработала функция открытия попАпа');
     //Listener Keystroke
@@ -94,7 +93,7 @@ function handleSubmitFormPlace(event) {
 function closePopUp(popup) {
     popup.classList.remove('popup_opened');
     // console.log('Сработала функция закрытия попАпа!');
-    const popUpContent = popup.querySelector('.popup__content_disabled');
+    const popUpContent = popup.querySelector('.popup__container').firstElementChild;
     popUpContent.classList.remove('popup__content_opened');
     document.removeEventListener('keydown', keyHandler);
     //console.log('Удален слушатель нажатий клавиш')
@@ -170,6 +169,9 @@ popUps.forEach(function (popup) {
 });
 
 //  ! Валидация
+profileValidator.enableValidation();
+placeValidator.enableValidation();
+
 function handleSubmitformProfile(event) {
     event.preventDefault();
     profileName.textContent = popUpProfileName.value;
@@ -178,15 +180,30 @@ function handleSubmitformProfile(event) {
     // console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
 };
 
+
 // !Функция сброса ошибок
 function resetErrorInputsValidate(formElement) {
     const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
     const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
     inputsElement.forEach(function (inputElement) {
-        inputElement.classList.remove('popup__input_type_error');
+        inputElement.classList.remove('popup__input_error');
     });
     inputsErrorElement.forEach(function (inputErrorElement) {
-        inputErrorElement.classList.remove('popup__input-error_active');
+        inputErrorElement.textContent = '';
     })
     // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
+}
+
+// !Функция Переключает состояние кнопки
+const toggleButtonState = function (formElement, { submitButtonSelector, inactiveButtonClass }) {
+    const buttonElement = formElement.querySelector(submitButtonSelector);
+    if (formElement.checkValidity()) {
+        buttonElement.classList.remove(inactiveButtonClass);
+        buttonElement.removeAttribute('disabled');
+        //console.log(`Кнопка '${buttonElement.name}' активна`);
+    } else {
+        buttonElement.classList.add(inactiveButtonClass);
+        buttonElement.setAttribute('disabled', true);
+        //console.log(`Кнопка '${buttonElement.name}' НЕ активна`);
+    }
 }

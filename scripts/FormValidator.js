@@ -6,14 +6,21 @@ export default class FormValidator {
 
 	//Метод, который показывает ошибку
 	_showError(form, input) {
+		// Нахожу инпут  ошибкой
 		const error = form.querySelector(`#${input.id}-error`);
+		// Копирую текст браузерной валидации в кастомный инпут с ошибкой
 		error.textContent = input.validationMessage;
+		// Добавляю инпуту класс ошибки
+		input.classList.add(this._config.inputErrorClass);
+		//Проверка
+    // console.log('Выполнен метод ShowError класса FormValidator');
 	}
 
 	//Метод, который скрывает ошибку
 	_hideError(form, input) {
 		const error = form.querySelector(`#${input.id}-error`);
 		error.textContent = '';
+		input.classList.remove(this._config.inputErrorClass);
 	}
 
 	// Метод проверяющий валидность инпута
@@ -26,7 +33,7 @@ export default class FormValidator {
 	}
 
 	//Метод изменения состояния кнопки при валидности форм
-	_setButtonState(button, isActive, config) {
+	_toggleButtonState(button, isActive, config) {
 		if (isActive) {
 			button.classList.remove(config.inactiveButtonClass);
 			button.disabled = false;
@@ -40,11 +47,11 @@ export default class FormValidator {
 	_setEventListeners(form, config) {
 		const inputList = form.querySelectorAll(config.inputSelector);
 		const formButton = form.querySelector(config.submitButtonSelector);
-		this._setButtonState(formButton, this._checkInputValidity(form, config), config);
-		inputListValid.forEach((input) => {
+		this._toggleButtonState(formButton, form.checkValidity(), config);
+		inputList.forEach((input) => {
 			input.addEventListener('input', () => {
 				this._checkInputValidity(form, input, config);
-				this._setButtonState(formButton, this._checkInputValidity(form, config), config);
+				this._toggleButtonState(formButton, form.checkValidity(), config);
 			});
 		});
 	}
@@ -53,10 +60,8 @@ export default class FormValidator {
 	enableValidation() {
 		const config = this._config;
 		const forms = document.querySelectorAll(config.formSelector);
-
-		forms.forEach(() => {
+		forms.forEach((formElement) => {
 			this._setEventListeners(this._checkingForm, this._config);
-
 			this._checkingForm.addEventListener('submit', (event) => {
 				event.preventDefault();
 			});

@@ -46,18 +46,18 @@
 
         <section class="popup" id="popup-profile">
             <div class="popup__container">
-                <div class="popup__content popup__content_disabled">
+                <div class="popup__content">
                     <form class="popup__form" name="profile" id="form-profile" action="#" method="get">
                         <h2 class="popup__heading">Редактировать профиль</h2>
                         <div class="popup__wrapper-input">
                             <input class="popup__input" id="input-name" name="name-user" type="text" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
-                            <span class="popup__input-error popup__input-error_active" id="input-name-error"></span>
+                            <span class="popup__input-error" id="input-name-error"></span>
                         </div>
                         <div class="popup__wrapper-input">
                             <input class="popup__input" id="input-about-him" name="about-him" type="text" value="Исследователь океана" required minlength="2" maxlength="200">
-                            <span class="popup__input-error popup__input-error_active" id="input-about-him-error"></span>
+                            <span class="popup__input-error" id="input-about-him-error"></span>
                         </div>
-                        <button type="submit" class="popup__button popup__button_submit" name="button-save-form-profile">Сохранить</button>
+                        <button type="submit" class="popup__button" id="button-save-form-profile">Сохранить</button>
                     </form>
                     <button class="popup__button-close" type="button"></button>
                 </div>
@@ -66,7 +66,7 @@
         </section>
         <section class="popup" id="popup-place">
             <div class="popup__container">
-                <div class="popup__content popup__content_disabled">
+                <div class="popup__content">
                     <form class="popup__form" id="form-card-place" action="#" method="get" name="place">
                         <h2 class="popup__heading">Новое место</h2>
                         <div class="popup__wrapper-input">
@@ -77,16 +77,16 @@
                             <input class="popup__input" id="input-link" name="link" type="url" placeholder="Ссылка на картинку" required>
                             <span class="popup__input-error" id="input-link-error"></span>
                         </div>
-                        <button type="submit" class="popup__button popup__button_submit" id="button-create-card-place" name="button-create-card-place">Создать</button>
+                        <button type="submit" class="popup__button" id="button-create-card-place">Создать</button>
                     </form>
                     <button class="popup__button-close" type="button" autofocus></button>
                 </div>
             </div>
         </section>
 
-        <section class="popup popup_name_card-place" id="popup-card-place">
+        <section class="popup" id="popup-card-place">
             <div class="popup__container">
-                <div class="popup__content-card-place popup__content_disabled">
+                <div class="popup__content-card-place">
                     <img class="popup__image" src="#" alt="">
                     <h2 class="popup__image-title"></h2>
                     <button class="popup__button-close" type="button"></button>
@@ -111,7 +111,6 @@
             </div>
         </template>
     </div>
-    <script src="./scripts/validate.js"></script>
     <script type="module" src="./scripts/index.js"></script>
 </body>
 
