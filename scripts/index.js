@@ -59,11 +59,11 @@ export function openPopup(popup) {
 function openPopUpProfile() {
     openPopup(popUpProfile);
     //Проверка состояния кнопки submit
-    toggleButtonState(formProfile, config);
     resetErrorInputsValidate(formProfile);
     // Дублируем значения в поля попапа при открытии
     popUpProfileName.value = profileName.textContent;
     popUpProfileInfo.value = profileInfo.textContent;
+    toggleButtonState(formProfile, config);
     // console.log('Сработала функция открытия попАпа профиля')
 };
 
@@ -107,7 +107,7 @@ function handleClosePop(event) {
 
 // Closing popUp by click for overlay
 function clickByOverlay(event) {
-    if (!event.target.closest('.popup__content') && !event.target.closest('.popup__content-card-place')) {
+    if (event.target.classList.contains('popup__container')) {
         closePopUp(event.target.closest('.popup'));
     };
 };
@@ -132,6 +132,13 @@ document.querySelector('#button-create-card-place').addEventListener('click', fu
     const cardElement = card.generateCard();
     addCardPlace(cardElement);
 });
+
+//Функция создания новой карточки
+function creatheCard(objCard) {
+    const newCard = new Card(objCard, '#template-card-place');
+    const cardElement = newCard.generateCard();
+    return cardElement;
+}
 
 // !Фунция добавления карточки в контэйнер
 function addCardPlace(objCard) {
