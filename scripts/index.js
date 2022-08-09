@@ -27,6 +27,10 @@ const formPlace = document.querySelector('#form-card-place');
 const popUpProfileName = document.querySelector('#input-name');
 // Значение инпута ИНФО профиля в попапе
 const popUpProfileInfo = document.querySelector('#input-about-him');
+
+const inputLinkCard = document.querySelector('#input-link');
+
+const inputTitleCard =document.querySelector('#input-title');
 // Объект с селекторами для валидации
 const config = {
         // Селектор формы
@@ -44,6 +48,7 @@ const config = {
 const profileValidator = new FormValidator(config, formProfile);
 // Экземпляр валидации формы place
 const placeValidator = new FormValidator(config, formPlace);
+
 // !Function opening popup
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -58,33 +63,20 @@ export function openPopup(popup) {
 // !Opening popup PROFILE
 function openPopUpProfile() {
     openPopup(popUpProfile);
-    //Проверка состояния кнопки submit
-    resetErrorInputsValidate(formProfile);
     // Дублируем значения в поля попапа при открытии
     popUpProfileName.value = profileName.textContent;
     popUpProfileInfo.value = profileInfo.textContent;
-    toggleButtonState(formProfile, config);
+    profileValidator.resetValidation();
     // console.log('Сработала функция открытия попАпа профиля')
 };
 
 // !Opening popup PLACE
 function openPopUpPlace() {
     openPopup(popUpPlace);
-    //Сброс ошибок
-    resetErrorInputsValidate(formPlace);
     // Reset формы при каждом открытии попапа
     formPlace.reset();
-    //Проверка состояния кнопки submit
-    toggleButtonState(formPlace, config);
+    placeValidator.resetValidation();
     // console.log(`Пользователь открыл(а) ${popUpPlace.id}`);
-};
-
-// !Сохранения формы места
-function handleSubmitFormPlace(event) {
-    event.preventDefault();
-    closePopUp(popUpPlace);
-    // console.log(`У '${popUpPlace.id}' произошло событие SUBMIT-1`);
-
 };
 
 // !Closed poups
@@ -122,16 +114,15 @@ function keyHandler(event) {
 
 // ! Loading cards
 defaultCards.forEach(function(defaultCard) {
-    const card = new Card(defaultCard, '#template-card-place');
-    const cardElement = card.generateCard();
+    const cardElement = creatheCard(defaultCard);
     addCardPlace(cardElement);
 });
 
-document.querySelector('#button-create-card-place').addEventListener('click', function() {
-    const card = new Card(creatheObjNewCard(), '#template-card-place');
-    const cardElement = card.generateCard();
-    addCardPlace(cardElement);
-});
+//  ! Валидация
+profileValidator.enableValidation();
+placeValidator.enableValidation();
+
+
 
 //Функция создания новой карточки
 function creatheCard(objCard) {
@@ -147,9 +138,9 @@ function addCardPlace(objCard) {
 
 function creatheObjNewCard() {
     const newCard = {
-        link: document.querySelector('#input-link').value,
-        alt: `Фотография ${document.querySelector('#input-title').value}`,
-        title: document.querySelector('#input-title').value,
+        link: inputLinkCard.value,
+        alt: `Фотография ${inputCardTitle.value}`,
+        title: inputCardTitle.value,
     };
     return newCard;
 };
@@ -173,10 +164,7 @@ popUps.forEach(function(popup) {
     popup.addEventListener('mousedown', clickByOverlay);
 });
 
-//  ! Валидация
-profileValidator.enableValidation();
-placeValidator.enableValidation();
-
+// Submit форм
 function handleSubmitformProfile(event) {
     event.preventDefault();
     profileName.textContent = popUpProfileName.value;
@@ -185,28 +173,12 @@ function handleSubmitformProfile(event) {
     // console.log(`У '${popUpProfile.id}' произошло событие SUBMIT-1`);
 };
 
+// !Сохранения формы места
+function handleSubmitFormPlace(event) {
+    event.preventDefault();
+    const cardElement = creatheCard(creatheObjNewCard());
+    addCardPlace(cardElement);
+    closePopUp(popUpPlace);
+    // console.log(`У '${popUpPlace.id}' произошло событие SUBMIT-1`);
 
-// !Функция сброса ошибок
-function resetErrorInputsValidate(formElement) {
-    const inputsElement = Array.from(formElement.querySelectorAll('.popup__input'));
-    const inputsErrorElement = Array.from(formElement.querySelectorAll('.popup__input-error'));
-    inputsElement.forEach(function(inputElement) {
-        inputElement.classList.remove('popup__input_error');
-    });
-    inputsErrorElement.forEach(function(inputErrorElement) {
-            inputErrorElement.textContent = '';
-        })
-        // console.log(`У инпутов формы'${formElement.name}' сброшены ошибки`);
-}
-
-// !Функция Переключает состояние кнопки
-const toggleButtonState = function(formElement, { submitButtonSelector }) {
-    const buttonElement = formElement.querySelector(submitButtonSelector);
-    if (formElement.checkValidity()) {
-        buttonElement.removeAttribute('disabled');
-        //console.log(`Кнопка '${buttonElement.name}' активна`);
-    } else {
-        buttonElement.setAttribute('disabled', true);
-        //console.log(`Кнопка '${buttonElement.name}' НЕ активна`);
-    }
-}
+};
