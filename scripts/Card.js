@@ -10,6 +10,7 @@ export default class Card {
         this._cardImage = this._element.querySelector('.element__image');
         this._buttonLike = this._element.querySelector('.element__logo-like');
         this._buttonDelete = this._element.querySelector('.element__button-delete');
+        this._popUpCardPlace = document.querySelector('#popup-card-place');
     }
 
     _getTemplate() {
@@ -38,10 +39,10 @@ export default class Card {
     }
 
     _openPopupCard() {
-        const popUpCardPlace = document.querySelector('#popup-card-place');
-        popUpCardPlace.querySelector('.popup__image').src = this._image;
-        popUpCardPlace.querySelector('.popup__image-title').textContent = this._title;
-        openPopup(popUpCardPlace);
+        this._popUpCardPlace.style.background = 'rgb(0, 0, 0, .9)';
+        this._popUpCardPlace.querySelector('.popup__image').src = this._image;
+        this._popUpCardPlace.querySelector('.popup__image-title').textContent = this._title;
+        openPopup(this._popUpCardPlace);
     }
 
     _setEventListener() {
