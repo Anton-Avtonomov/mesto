@@ -1,7 +1,8 @@
 import Card from './Card.js';
 import { initialCardsPlace as defaultCards } from './initial-cards.js';
 import FormValidator from './FormValidator.js';
-import Popup from './Section.js';
+// import PopupWithForm from './PopupWithForm.js';
+// import PopupWithImage from './PopupWithImage';
 
 // !КОНСТАНТЫ и ПЕРЕМЕННЫЕ
 // Место для добавления карточек
@@ -20,6 +21,8 @@ const popUps = document.querySelectorAll('.popup');
 const popUpProfile = document.querySelector('#popup-profile');
 // ПопАп добавления карточки
 const popUpPlace = document.querySelector('#popup-place');
+// ПопАп rfhnjxrb
+const popUpCardPlace = document.querySelector('#popup-card-place');
 // Форма попапа профиля
 const formProfile = document.querySelector('#form-profile');
 // Форма попапа профиля
@@ -90,6 +93,8 @@ function openPopUpPlace() {
 function closePopUp(popup) {
     popup.classList.remove('popup_opened');
     // console.log('Сработала функция закрытия попАпа!');
+    const popUpContent = popup.querySelector('.popup__container').firstElementChild;
+    popUpContent.classList.remove('popup__content_opened');
     document.removeEventListener('keydown', keyHandler);
     //console.log('Удален слушатель нажатий клавиш')
 };
