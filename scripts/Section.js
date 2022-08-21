@@ -2,16 +2,20 @@ export default class Section {
     constructor({ items, renderer }, containerSelector) {
         this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
+        this._items = items;
+        // console.log('Создан экземпляр класса Section');
     }
 
-
-    rendererItems(items) {
-        items.forEach(function (item) {
+    rendererItems() {
+        this._items.forEach( item => {
             this._renderer(item)
+            // console.log('Сработал метод класса Section - rendererItems!');
         })
     }
 
-    addItem(item) {
-        this._container.prepend(item);
+    addItem(element) {
+        this._container.prepend(element);
+        // console.log('Сработал метод класса Section - addItem!');
     }
+
 }

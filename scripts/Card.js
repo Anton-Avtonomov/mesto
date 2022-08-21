@@ -1,16 +1,17 @@
-import { openPopup } from './index.js';
+// import { openPopup } from './index.js';
 
 export default class Card {
-    constructor(objNewCard, templateSelector) {
+    constructor(objNewCard, templateSelector, handleCardClick) {
         this._title = objNewCard.title;
         this._image = objNewCard.link;
         this._altImage = objNewCard.alt;
         this._templateSelector = templateSelector;
         this._element = this._getTemplate();
+        this._handleCardClick = handleCardClick;
         this._cardImage = this._element.querySelector('.element__image');
         this._buttonLike = this._element.querySelector('.element__logo-like');
         this._buttonDelete = this._element.querySelector('.element__button-delete');
-        this._popUpCardPlace = document.querySelector('#popup-card-place');
+        // console.log('Создан экземпляр класса Card')
     }
 
     _getTemplate() {
@@ -19,7 +20,9 @@ export default class Card {
             .content
             .querySelector('.element')
             .cloneNode(true);
+        // console.log('Сработал метод класса Card - TEMPLATE');
         return cardElement;
+
     }
 
     generateCard() {
@@ -27,22 +30,26 @@ export default class Card {
         this._cardImage.alt = this._altImage;
         this._element.querySelector('.element__title').textContent = this._title;
         this._setEventListener();
+        // console.log('Сработал метод класса Card - ГЕНЕРАЦИИ карточки');
         return this._element;
     }
 
     _handleLike(event) {
         this._buttonLike.classList.toggle('element__logo-like_active');
+        // console.log('Сработал метод класса Card - LIKE');
     }
 
     _handleDelete(event) {
         this._element.remove();
+        // console.log('Сработал метод класса Card - DELETE');
     }
 
     _openPopupCard() {
-        this._popUpCardPlace.style.background = 'rgb(0, 0, 0, .9)';
-        this._popUpCardPlace.querySelector('.popup__image').src = this._image;
-        this._popUpCardPlace.querySelector('.popup__image-title').textContent = this._title;
-        openPopup(this._popUpCardPlace);
+        const popUpCardPlace = document.querySelector('#popup-card-place');
+        popUpCardPlace.querySelector('.popup__image').src = this._image;
+        popUpCardPlace.querySelector('.popup__image-title').textContent = this._title;
+        this._handleCardClick();
+        // console.log('Сработал метод класса Card - openPopupCard');
     }
 
     _setEventListener() {
@@ -55,5 +62,6 @@ export default class Card {
         this._cardImage.addEventListener('click', () => {
             this._openPopupCard();
         });
+        // console.log('Сработал метод класса Card - ДОБАВЛЕНИЯ СЛУШАТЕЛЕЙ');  
     }
 }
