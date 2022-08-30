@@ -25,3 +25,16 @@ export const config = {
     submitButtonSelector: '.popup__button-submit',
 }
 
+// const buttonLikeImage = new URL('../image/elements/logo-like.svg',
+//     import.meta.url);
+// const buttonDeleteImage = new URL('../image/elements/logo-delete.png',
+//     import.meta.url);
+// const buttonEditImage = new URL('../image/profile/pen.svg',
+//     import.meta.url);
+// const buttonAddCardImage = new URL('../image/profile/add-button.svg',
+//     import.meta.url);
+// const logoHeaderImage = new URL('../image/header/logo-mesto.svg',
+//     import.meta.url);
+// let avatarImage = new URL('../image/profile/avatar-jacques.jpg',
+//     import.meta.url);
+

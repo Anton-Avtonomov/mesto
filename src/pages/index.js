@@ -1,9 +1,10 @@
-import Card from './Card.js';
-import { initialCardsPlace as defaultCards } from './initial-cards.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
+import '../pages/index.css';
+import Card from '../scripts/Card.js';
+import { initialCardsPlace as defaultCards } from '../scripts/initial-cards.js';
+import FormValidator from '../scripts/FormValidator.js';
+import Section from '../scripts/Section.js';
+import PopupWithImage from '../scripts/PopupWithImage.js';
+import PopupWithForm from '../scripts/PopupWithForm.js';
 import {
     buttonOpenPopUpPlace,
     buttonEditPopUpProfile,

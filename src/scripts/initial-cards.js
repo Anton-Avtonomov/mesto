@@ -2,17 +2,17 @@ const initialCardsPlace = [
     // Карточки из DOM
     {
         title: 'Шерегеш',
-        link: './image/elements/sheregesh.jpg',
+        link: 'https://well.ru/upload/uf/b85/Russia_Sheregesh_nice-view_10.jpg',
         alt: 'Фотография поселка Шерегеш РФ',
     },
     {
         title: 'Красная Поляна',
-        link: './image/elements/red_glade.jpg',
+        link: 'https://static.tildacdn.com/tild6162-3636-4863-a132-663262313866/2.jpg',
         alt: 'Фотография c Красной поляны РФ',
     },
     {
         title: 'Горнолыжный курорт Степаново',
-        link: './image/elements/stepanovo.jpg',
+        link: 'https://static.ngs.ru/cache/turizm/images/efa6f4048ac5ca3dcd2d40c2b62e0531_1024_768.jpg',
         alt: 'Фотография  с горнолыжного курорта Степаново РФ',
     },
     {
@@ -47,19 +47,23 @@ const initialCardsPlace = [
     },
     {
         title: 'Алтайский край',
-        link: './image/elements/altai.jpg',
+        link: 'https://zefirka.net/wp-content/uploads/2015/12/pejzazhi-altajskogo-kraya-1.jpg',
         alt: 'Фотография  храма в горах из города Карачаевск',
     },
     {
         title: 'Абхазия',
-        link: './image/elements/abkhazia.jpg',
+        link: 'https://placepic.ru/wp-content/uploads/2018/10/572143_main.jpg',
         alt: 'Фотография озера Рица в Абхазии',
     },
     {
         title: 'Дагестан',
-        link: './image/elements/dagestan.jpg',
+        link: 'https://www.veditour.ru/upload/tours/5874/1-1.jpg',
+        // '<%=require("./image/elements/dagestan.jpg")%>'
         alt: 'Фотография гор в Дагетане РФ',
     },
 ];
 
 export { initialCardsPlace };
+
+// const cardDagestanImage = new URL('../image/elements/dagestan.jpg',
+//     import.meta.url);

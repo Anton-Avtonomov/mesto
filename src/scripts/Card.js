@@ -1,5 +1,3 @@
-// import { openPopup } from './index.js';
-
 export default class Card {
     constructor(objNewCard, templateSelector, handleCardClick) {
         this._title = objNewCard.title;
