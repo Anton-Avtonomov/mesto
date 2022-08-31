@@ -39,13 +39,11 @@ export default class Card {
 
     _handleDelete(event) {
         this._element.remove();
+        this._element = null;
         // console.log('Сработал метод класса Card - DELETE');
     }
 
     _openPopupCard() {
-        const popUpCardPlace = document.querySelector('#popup-card-place');
-        popUpCardPlace.querySelector('.popup__image').src = this._image;
-        popUpCardPlace.querySelector('.popup__image-title').textContent = this._title;
         this._handleCardClick();
         // console.log('Сработал метод класса Card - openPopupCard');
     }

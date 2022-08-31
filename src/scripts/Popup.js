@@ -11,7 +11,7 @@ export default class Popup {
     openPopup() {
         this._popup.classList.add('popup_opened');
         this._contentPopup.classList.add('popup__content_opened');
-        document.addEventListener('keydown', this._handleEscClose);
+        this._popup.addEventListener('keydown', this._handleEscClose);
         // console.log('Сработал метод класса Popup - открытие');
     }
 
@@ -36,7 +36,6 @@ export default class Popup {
                 this.closePopup()
             }
         });
-        document.addEventListener('keydown', this._handleEscClose);
         // console.log('Сработал метод класса Popup - установки набора слушателей!');
     }
 }

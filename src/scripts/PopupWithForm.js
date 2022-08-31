@@ -8,7 +8,7 @@ export default class PopupWithForm extends Popup {
         // console.log('Создан экземпляр класса PopupWithForm');
     }
 
-    _getInputValues() {
+    getInputValues() {
         this._inputList = this._popup.querySelectorAll('.popup__input');
         this._inputValues = {};
         this._inputList.forEach((input) => {
@@ -27,7 +27,7 @@ export default class PopupWithForm extends Popup {
         super.setEventListeners();
         this._popupForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            this._handleSubmit(this._getInputValues());
+            this._handleSubmit(this.getInputValues());
             this.closePopup();
             // console.log('Сработал метод класса PopupWithForm - setEventListenerss!');
         })

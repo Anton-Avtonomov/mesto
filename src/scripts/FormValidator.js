@@ -38,7 +38,7 @@ export default class FormValidator {
     _toggleButtonState() {
         if (this._checkingForm.checkValidity()) {
             this._formButton.disabled = false;
-            
+
         } else {
             this._formButton.disabled = true;
         }
@@ -59,12 +59,12 @@ export default class FormValidator {
         this._toggleButtonState();
         this._inputsList.forEach((inputElement) => {
             this._hideError(inputElement);
-          });
+        });
     }
 
     //Метод включения валидации форм сайта 
     enableValidation() {
         this._setEventListeners();
     }
-    
+
 }
