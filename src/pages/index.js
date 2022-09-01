@@ -48,7 +48,7 @@ let userProfile = new UserInfo({
 })
 
 // Submit popup profile
-function handleSubmitProfile () {
+function handleSubmitProfile() {
     // profileName.textContent = data['name-user'];
     // profileInfo.textContent = data['about-him'];
     let newUser = profileFormPopup.getInputValues();
@@ -62,7 +62,10 @@ const profileFormPopup = new PopupWithForm({
 });
 
 profileFormPopup.setEventListeners();
-buttonEditPopUpProfile.addEventListener('click', () => profileFormPopup.openPopup())
+buttonEditPopUpProfile.addEventListener('click', () => {
+    userProfile.showDataNewUser();
+    profileFormPopup.openPopup();
+})
 
 
 // Submit popup place
@@ -78,8 +81,8 @@ const placeFormPopup = new PopupWithForm({
 
 placeFormPopup.setEventListeners();
 buttonOpenPopUpPlace.addEventListener('click', () => {
-    placeFormPopup.openPopup();
     placeValidator.resetValidation();
+    placeFormPopup.openPopup();
 });
 
 //Функция создания новой карточки

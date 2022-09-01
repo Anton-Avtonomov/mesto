@@ -11,14 +11,14 @@ export default class Popup {
     openPopup() {
         this._popup.classList.add('popup_opened');
         this._contentPopup.classList.add('popup__content_opened');
-        this._popup.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('keydown', this._handleEscClose);
         // console.log('Сработал метод класса Popup - открытие');
     }
 
     closePopup() {
         this._popup.classList.remove('popup_opened');
         this._contentPopup.classList.remove('popup__content_opened');
-        this._popup.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._handleEscClose);
         // console.log('Сработал метод класса Popup - ЗАКРЫТИЕ');
     }
 
