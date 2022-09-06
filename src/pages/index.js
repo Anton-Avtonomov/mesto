@@ -17,6 +17,7 @@ import {
     formPlace,
     config,
 } from '../utils/constants.js'
+import Popup from '../scripts/Popup';
 
 // Экземпляр валидации формы profile
 const profileValidator = new FormValidator(config, formProfile);
@@ -99,3 +100,13 @@ function creatheCard(objCard) {
     const cardElement = newCard.generateCard();
     return cardElement;
 }
+// Popup Avatar
+const PopupChangeAvatar = new Popup('#popup-avatar');
+const buttonChangeAvatar = document.querySelector('.profile__avatar');
+buttonChangeAvatar.addEventListener('click', () => { 
+    PopupChangeAvatar.openPopup();
+    PopupChangeAvatar.setEventListeners();
+
+});
+// Popup Deleting
+const PopupConfirmDeletion = new Popup('#popup-confirm-deletion');

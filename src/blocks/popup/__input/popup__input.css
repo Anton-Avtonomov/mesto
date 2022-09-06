@@ -25,3 +25,7 @@
     border-bottom-color: rgba(250, 0, 0, 0.4);
     color: red;
 }
+
+.popup__input_place_form-avatar {
+    margin-top: 38px;
+}
