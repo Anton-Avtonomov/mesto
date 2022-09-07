@@ -19,11 +19,11 @@ export default class UserInfo {
     }
     //принимает введённые данные
     setUserInfo({
-        userName,
-        userInfo
+        name,
+        about
     }) {
-        this._name.textContent = userName;
-        this._info.textContent = userInfo;
+        this._name.textContent = name;
+        this._info.textContent = about;
     }
 
     showDataNewUser() {

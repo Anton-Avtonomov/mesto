@@ -1,8 +1,8 @@
 export default class Card {
     constructor(objNewCard, templateSelector, handleCardClick) {
-        this._title = objNewCard.title;
+        this._title = objNewCard.name;
         this._image = objNewCard.link;
-        this._altImage = objNewCard.alt;
+        this._altImage = `Изображение ${this._title}`;
         this._templateSelector = templateSelector;
         this._element = this._getTemplate();
         this._handleCardClick = handleCardClick;
@@ -30,6 +30,8 @@ export default class Card {
         this._setEventListener();
         // console.log('Сработал метод класса Card - ГЕНЕРАЦИИ карточки');
         return this._element;
+
+
     }
 
     _handleLike(event) {

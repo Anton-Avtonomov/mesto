@@ -1,8 +1,8 @@
 import '../pages/index.css';
 import Card from '../scripts/Card.js';
-import {
-    initialCardsPlace as defaultCards
-} from '../scripts/initial-cards.js';
+// import {
+//     initialCardsPlace as defaultCards
+// } from '../scripts/initial-cards.js';
 import FormValidator from '../scripts/FormValidator.js';
 import UserInfo from '../scripts/UserInfo';
 import Section from '../scripts/Section.js';
@@ -18,6 +18,7 @@ import {
     config,
 } from '../utils/constants.js'
 import Popup from '../scripts/Popup';
+import Api from '../scripts/Api';
 
 // Экземпляр валидации формы profile
 const profileValidator = new FormValidator(config, formProfile);
@@ -34,10 +35,8 @@ function rendererCard(obj) {
 }
 // Экземпляр Section
 const cardSection = new Section({
-    items: defaultCards,
     renderer: rendererCard
 }, '.elements');
-cardSection.rendererItems();
 
 // Экземпляр класса PopupWithImage
 const imagePopup = new PopupWithImage('#popup-card-place');
@@ -48,19 +47,22 @@ let userProfile = new UserInfo({
     info: '.profile__about-him',
 })
 
-// Submit popup profile
-function handleSubmitProfile() {
-    // profileName.textContent = data['name-user'];
-    // profileInfo.textContent = data['about-him'];
-    let newUser = profileFormPopup.getInputValues();
-    userProfile.setUserInfo(newUser);
-}
 
 // Экземпляр класса PopupWithForm для profile
 const profileFormPopup = new PopupWithForm({
-    handleSubmit: handleSubmitProfile,
+    handleSubmit: (objectInputs) => {
+        const newUser = {name: objectInputs.userName, about: objectInputs.userInfo}
+        api.editProfileUser(newUser)
+        .then((response) => {
+          userProfile.setUserInfo(response)  
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, 
     popupSelector: '#popup-profile'
 });
+
 
 profileFormPopup.setEventListeners();
 buttonEditPopUpProfile.addEventListener('click', () => {
@@ -93,17 +95,14 @@ function creatheCard(objCard) {
         // const link = objCard.link;
         // imagePopup.openPopup({title, link})
         imagePopup.openPopup({
-            title: objCard.title,
+            name: objCard.name,
             link: objCard.link
+    
         })
     });
-    const cardElement = newCard.generateCard();
-    return cardElement;
+    return newCard.generateCard();
+    
 }
-
-
-
-
 
 
 
@@ -125,34 +124,41 @@ buttonsOpeningPopupConfirm.forEach((buttonDelete) => {
     })
 })
 
-// !API
-//const api = new Api({
-//    url: 'https://mesto.nomoreparties.co/v1/cohort-49/',
-//    headers: {
-//        token: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6',
-//        'Content-Type': 'application/json'
-//    }
-//}); 
+// API
+const api = new Api({
+   url: 'https://mesto.nomoreparties.co/v1/cohort-49',
+   headers: {
+    authorization: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6',
+       'Content-Type': 'application/json'
+   }
+}); 
+
+// api._getUserData()
+// .then((response) => {
+//     console.log(response)
+//     userProfile.setUserInfo(response)
+// })
+
+// api._loadingCard()
+// .then((response) => {
+//     console.log(response)
+// cardSection.rendererItems(response)
+// })
+// Метод одновременного данных сервера
+
+api.getDataServer()
+.then( ([dataUser, cards]) => {
+    userProfile.setUserInfo(dataUser)
+    cardSection.rendererItems(cards)
+})
+.catch((error) => {
+    console.log(error)
+})
 
 
-fetch('https://mesto.nomoreparties.co/v1/cohort-49/cards', {
-        method: 'GET',
-        headers: {
-            authorization: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6'
-        }
-    })
-    .then(res => res.json())
-    .then((result) => {
-        console.log(result);
-    });
 
-fetch('https://mesto.nomoreparties.co/v1/cohort-49/users/me', {
-        method: 'GET',
-        headers: {
-            authorization: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6'
-        }
-    })
-    .then(res => res.json())
-    .then((result) => {
-        console.log(result);
-    });
+
+
+
+
+
