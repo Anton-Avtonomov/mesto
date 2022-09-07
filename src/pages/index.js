@@ -28,14 +28,14 @@ const placeValidator = new FormValidator(config, formPlace);
 placeValidator.enableValidation();
 
 // Добавление карточки в DOM
-function renderer(obj) {
+function rendererCard(obj) {
     const cardElement = creatheCard(obj);
     cardSection.addItem(cardElement)
 }
 // Экземпляр Section
 const cardSection = new Section({
     items: defaultCards,
-    renderer
+    renderer: rendererCard
 }, '.elements');
 cardSection.rendererItems();
 
@@ -70,8 +70,8 @@ buttonEditPopUpProfile.addEventListener('click', () => {
 
 
 // Submit popup place
-const handleSubmitPlace = function (data) {
-    renderer(data);
+const handleSubmitPlace = function(data) {
+    rendererCard(data);
 }
 
 // Экземпляр класса PopupWithForm для place
@@ -100,13 +100,59 @@ function creatheCard(objCard) {
     const cardElement = newCard.generateCard();
     return cardElement;
 }
+
+
+
+
+
+
+
 // Popup Avatar
 const PopupChangeAvatar = new Popup('#popup-avatar');
-const buttonChangeAvatar = document.querySelector('.profile__avatar');
-buttonChangeAvatar.addEventListener('click', () => { 
+const buttonChangeAvatar = document.querySelector('.profile__button-edit-avatar');
+buttonChangeAvatar.addEventListener('click', () => {
     PopupChangeAvatar.openPopup();
     PopupChangeAvatar.setEventListeners();
 
 });
 // Popup Deleting
 const PopupConfirmDeletion = new Popup('#popup-confirm-deletion');
+const buttonsOpeningPopupConfirm = document.querySelectorAll('.element__button-delete');
+buttonsOpeningPopupConfirm.forEach((buttonDelete) => {
+    buttonDelete.addEventListener('click', () => {
+        PopupConfirmDeletion.openPopup();
+        PopupConfirmDeletion.setEventListeners();
+    })
+})
+
+// !API
+//const api = new Api({
+//    url: 'https://mesto.nomoreparties.co/v1/cohort-49/',
+//    headers: {
+//        token: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6',
+//        'Content-Type': 'application/json'
+//    }
+//}); 
+
+
+fetch('https://mesto.nomoreparties.co/v1/cohort-49/cards', {
+        method: 'GET',
+        headers: {
+            authorization: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6'
+        }
+    })
+    .then(res => res.json())
+    .then((result) => {
+        console.log(result);
+    });
+
+fetch('https://mesto.nomoreparties.co/v1/cohort-49/users/me', {
+        method: 'GET',
+        headers: {
+            authorization: 'e0f40131-d89a-4c5d-97a8-e3c19ffbc3e6'
+        }
+    })
+    .then(res => res.json())
+    .then((result) => {
+        console.log(result);
+    });

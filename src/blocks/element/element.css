@@ -6,4 +6,10 @@
     color: rgba(0, 0, 0, 1);
     height: 361px;
     position: relative;
+    transition: box-shadow .3s ease-in-out, transform .4s ease;
+}
+
+.element:hover {
+    box-shadow: 4px 4px 10px rgba(0, 250, 250, .7), -1px -1px 10px rgba(0, 250, 250, .7);
+    transform: scale(1.03);
 }
