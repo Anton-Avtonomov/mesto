@@ -1,5 +1,5 @@
 export default class Section {
-    constructor({ renderer: functionRenderer }, containerSelector) {
+    constructor( functionRenderer, containerSelector) {
         this._renderer = functionRenderer;
         this._container = document.querySelector(containerSelector);
         // console.log('Создан экземпляр класса Section');
