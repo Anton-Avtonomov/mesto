@@ -15,14 +15,13 @@ import {
     profileInfo,
     formProfile,
     formPlace,
+    formAvatar,
     config,
 } from '../utils/constants.js'
-import Popup from '../scripts/Popup';
 import Api from '../scripts/Api';
+import PopupConfirmDelete from '../scripts/Confirm-delete';
 
-// Экземпляр валидации формы profile
-const profileValidator = new FormValidator(config, formProfile);
-profileValidator.enableValidation();
+
 
 
 
@@ -36,6 +35,7 @@ const cardSection = new Section(rendererCard, '.elements');
 
 // !popup IMAGE card
 const imagePopup = new PopupWithImage('#popup-card-place');
+
 imagePopup.setEventListeners();
 
 let userInfo = new UserInfo({
@@ -51,7 +51,9 @@ const popupProfile = new PopupWithForm(
         const newUser = {
             name: objectInputs.userName,
             about: objectInputs.userInfo
-        }
+        };
+        popupProfile.statusloading(true);
+
         api.editProfileUser(newUser)
             .then((response) => {
                 userInfo.setUserInfo(response)
@@ -59,7 +61,14 @@ const popupProfile = new PopupWithForm(
             .catch((error) => {
                 console.log(error)
             })
+            .finally(() => {
+                popupProfile.statusloading(false);
+            })
     }, '#popup-profile');
+
+// Экземпляр валидации формы profile
+const profileValidator = new FormValidator(config, formProfile);
+profileValidator.enableValidation();
 
 popupProfile.setEventListeners();
 buttonEditProfile.addEventListener('click', () => {
@@ -72,7 +81,7 @@ buttonEditProfile.addEventListener('click', () => {
 const popupAddingCard = new PopupWithForm(
     // Функция handleSubmit popup CARD
     (objCard) => {
-        console.log(objCard);
+        popupAddingCard.statusloading(true);
         api.addNewcard(objCard)
             .then((response) => {
                 console.log(response)
@@ -80,8 +89,11 @@ const popupAddingCard = new PopupWithForm(
             })
             .catch((error) =>
                 console.log(error))
-        // rendererCard(objCard)
+            .finally(() => {
+                popupAddingCard.statusloading(false);
+            })
     }, '#popup-place');
+
 
 // кнопка открытия 
 buttonOpenPopUpCard.addEventListener('click', () => {
@@ -108,14 +120,39 @@ function creatheCard(objCard) {
             imagePopup.openPopup({
                 name: objCard.name,
                 link: objCard.link
-            })
+            },)
         },
         // Функция handleDeleteClick
         () => {
             console.log("Фукнция открытия попапа подтверждения удаления")
-            popupConfirmDeletion.openPopup();
+            popupConfirmDeletion.openPopup(() => {
+                api.deleteCard(newCard.idCard)
+                    .catch((error) => {
+                        console.log(error)
+                    });
+                newCard._handleDelete();
+            });
             popupConfirmDeletion.setEventListeners();
-        });
+
+        },
+        userInfo.userId,
+        // Method add Like
+        () => {
+            api.addLike(newCard.idCard)
+                .then((response) => {
+                    newCard.changeLikesArray(response.likes);
+                    // console.log('Добавление',response);
+                })
+        },
+        // Method remove Like
+        () => {
+            api.removeLike(newCard.idCard)
+                .then((response) => {
+                    newCard.changeLikesArray(response.likes);
+                    // console.log('Удаление',response);
+                })
+        }
+    );
     return newCard.generateCard();
 }
 
@@ -125,9 +162,18 @@ function creatheCard(objCard) {
 const popupChangeAvatar = new PopupWithForm(
     // Функция handleSubmit popup AVATAR
     () => {
-        console.log('Сабмит попапа Аватара')
+        popupChangeAvatar.statusloading(true);
+        console.log(popupChangeAvatar);
+        console.log(popupChangeAvatar.querySelector('#input-avatar'));
+        // userInfo.changeAvatarUser(newAvatar);
+
     },
     '#popup-avatar');
+
+    // Экземпляр валидации формы avatar
+const avatarValidator = new FormValidator(config, formAvatar);
+avatarValidator.enableValidation();
+popupChangeAvatar.setEventListeners();
 
 // 
 const buttonChangeAvatar = document.querySelector('.profile__button-edit-avatar');
@@ -140,12 +186,8 @@ buttonChangeAvatar.addEventListener('click', () => {
 
 
 // !popup Deleting
-const popupConfirmDeletion = new PopupWithForm(
-    // Функция handleSubmit popup DELETE
-    () => {
-        console.log('Сабмит попапа Удаления')
-    },
-    '#popup-confirm-deletion');
+const popupConfirmDeletion = new PopupConfirmDelete('#popup-confirm-deletion');
+popupConfirmDeletion.setEventListeners();
 
 
 // API
@@ -172,8 +214,10 @@ const api = new Api({
 // Метод одновременного приёма данных сервера
 api.getDataServer()
     .then(([dataUser, cards]) => {
-        userInfo.setUserInfo(dataUser)
-        cardSection.rendererItems(cards)
+        userInfo.setUserInfo(dataUser);
+        userInfo.setUserId(dataUser._id);
+        cardSection.rendererItems(cards);
+
     })
     .catch((error) => {
         console.log(error)

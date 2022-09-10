@@ -11,6 +11,8 @@ export const profileInfo = document.querySelector('.profile__about-him');
 export const formProfile = document.querySelector('#form-profile');
 // Форма попапа профиля
 export const formPlace = document.querySelector('#form-card-place');
+// Форма попапа аватара
+export const formAvatar = document.querySelector('#form-avatar');
 // Объект с селекторами для валидации
 export const config = {
     // Селектор формы

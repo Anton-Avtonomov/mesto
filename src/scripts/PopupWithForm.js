@@ -1,11 +1,13 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-    constructor( handleSubmit, popupSelector ) {
+    constructor(handleSubmit, popupSelector) {
         super(popupSelector);
         this._handleSubmit = handleSubmit;
         this._popupForm = this._popup.querySelector('.popup__form');
         this._inputList = this._popup.querySelectorAll('.popup__input');
+        this._defaultTextButtonSubmit = this._popup.querySelector('.popup__button-submit').textContent;
+        this._buttonSubmit = this._popup.querySelector('.popup__button-submit');
         // console.log('Создан экземпляр класса PopupWithForm');
     }
 
@@ -31,7 +33,14 @@ export default class PopupWithForm extends Popup {
             this.closePopup();
             // console.log('Сработал метод класса PopupWithForm - setEventListenerss!');
         })
-
+    }
+    statusloading(status) {
+        if (status) {
+            this._buttonSubmit.textContent = 'Сохранение';
+        }
+        else {
+            this._buttonSubmit.textContent = this._defaultTextButtonSubmit;
+        }
     }
 }
 

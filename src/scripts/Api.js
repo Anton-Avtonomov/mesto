@@ -15,9 +15,9 @@ export default class Api {
     // Метод о получении данных о пользователе
     _getUserData() {
         return fetch(`${this._address}/users/me`, {
-                method: 'GET',
-                headers: this._headers
-            })
+            method: 'GET',
+            headers: this._headers
+        })
             // .then((res) => {
             //     this._getRes(res);
             // })
@@ -27,9 +27,9 @@ export default class Api {
 
     _getInitialCards() {
         return fetch(`${this._address}/cards`, {
-                method: 'GET',
-                headers: this._headers
-            })
+            method: 'GET',
+            headers: this._headers
+        })
             .then(this._getRes)
     }
 
@@ -42,13 +42,13 @@ export default class Api {
         about
     }) {
         return fetch(`${this._address}/users/me`, {
-                method: 'PATCH',
-                headers: this._headers,
-                body: JSON.stringify({
-                    name,
-                    about
-                })
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                name,
+                about
             })
+        })
             .then(this._getRes)
     }
 
@@ -57,13 +57,38 @@ export default class Api {
         link
     }) {
         return fetch(`${this._address}/cards`, {
-                method: 'POST',
-                headers: this._headers,
-                body: JSON.stringify({
-                    name,
-                    link
-                })
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name,
+                link
             })
+        })
             .then(this._getRes)
     }
+
+    deleteCard(idCard) {
+        return fetch(`${this._address}/cards/${idCard}`, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+            .then(this._getRes)
+    }
+
+    addLike(idCard) {
+        return fetch(`${this._address}/cards/${idCard}/likes`, {
+            method: 'PUT',
+            headers: this._headers,
+        })
+            .then(this._getRes)
+    }
+
+    removeLike(idCard) {
+        return fetch(`${this._address}/cards/${idCard}/likes`, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+            .then(this._getRes)
+    }
+
 }

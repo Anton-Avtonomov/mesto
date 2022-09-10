@@ -1,8 +1,13 @@
 export default class Card {
-    constructor(objNewCard, templateSelector, handleCardClick, handleDeleteClick) {
+    constructor(objNewCard, templateSelector, handleCardClick, handleDeleteClick, myId, methodAddLike, methodRemoveLike) {
+        this.idCard = objNewCard._id;
+        this.myId = myId;
+        this.userId = objNewCard.owner._id;
         this._title = objNewCard.name;
         this._image = objNewCard.link;
-        this._valueLikesCard = objNewCard.likes.length;
+        this._methodAddLike = methodAddLike;
+        this._methodRemoveLike = methodRemoveLike;
+        this._valueLikesCard = objNewCard.likes;
         this._altImage = `Изображение ${this._title}`;
         this._templateSelector = templateSelector;
         this._element = this._getTemplate();
@@ -26,20 +31,59 @@ export default class Card {
 
     }
 
+    _checkIdUser() {
+        this._changeLikeButton();
+        if (this.myId !== this.userId) {
+            this._buttonDelete.remove();
+        }
+    }
+
     generateCard() {
+        this._checkIdUser();
         this._cardImage.src = this._image;
         this._cardImage.alt = this._altImage;
         this._element.querySelector('.element__title').textContent = this._title;
-        this._counterLikesCard.textContent = this._valueLikesCard;
+        // this._counterLikesCard.textContent = this._valueLikesCard.lenght;
         this._setEventListener();
-        this._valueLikesCard = this._element.querySelector('.element__likes-counter').textContent
         // console.log('Сработал метод класса Card - ГЕНЕРАЦИИ карточки');
         return this._element;
     }
 
     _handleLike(event) {
-        this._buttonLike.classList.toggle('element__logo-like_active');
+        if (this._buttonLike.classList.contains('element__logo-like_active')) {
+            this._methodRemoveLike();
+        }
+        else {
+            this._methodAddLike();
+        }
         // console.log('Сработал метод класса Card - LIKE');
+    }
+
+    changeLikesArray(arrayLikes) {
+        this._valueLikesCard = arrayLikes;
+        this._changeLikeButton();
+    }
+    // !почитать про метод SOME
+    _checkMyLike() {
+        return this._valueLikesCard.some((user) => {
+            return user._id === this.myId;
+        })
+    }
+
+    _changeLikeButton() {
+        // if(this._checkMyLike()) {
+        //     this._buttonLike.classList.add('element__logo-like_active')
+        // }
+        // else {
+        //     this._buttonLike.classList.remove('element__logo-like_active') 
+        // }
+        // Запись через тернарный оператор
+        this._checkMyLike() 
+        ? this._buttonLike.classList.add('element__logo-like_active') 
+        : this._buttonLike.classList.remove('element__logo-like_active');
+        this._counterLikesCard.textContent = this._valueLikesCard.length;
+
+
     }
 
     _handleDelete(event) {
@@ -64,6 +108,7 @@ export default class Card {
         this._cardImage.addEventListener('click', () => {
             this._openPopupCard();
         });
+
         // console.log('Сработал метод класса Card - ДОБАВЛЕНИЯ СЛУШАТЕЛЕЙ');  
     }
 }
