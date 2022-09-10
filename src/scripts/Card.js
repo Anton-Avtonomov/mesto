@@ -1,5 +1,5 @@
 export default class Card {
-    constructor(objNewCard, templateSelector, handleCardClick) {
+    constructor(objNewCard, templateSelector, handleCardClick, handleDeleteClick) {
         this._title = objNewCard.name;
         this._image = objNewCard.link;
         this._valueLikesCard = objNewCard.likes.length;
@@ -8,6 +8,7 @@ export default class Card {
         this._element = this._getTemplate();
         this._counterLikesCard = this._element.querySelector('.element__likes-counter');
         this._handleCardClick = handleCardClick;
+        this._handleDeleteClick = handleDeleteClick;
         this._cardImage = this._element.querySelector('.element__image');
         this._buttonLike = this._element.querySelector('.element__button-like');
         this._buttonDelete = this._element.querySelector('.element__button-delete');
@@ -55,9 +56,10 @@ export default class Card {
     _setEventListener() {
         this._buttonLike.addEventListener('click', (event) => {
             this._handleLike(event);
+            // умуте на вход идет по дефолту - можно не писать
         });
-        this._buttonDelete.addEventListener('click', (event) => {
-            this._handleDelete(event);
+        this._buttonDelete.addEventListener('click', () => {
+            this._handleDeleteClick();
         });
         this._cardImage.addEventListener('click', () => {
             this._openPopupCard();
