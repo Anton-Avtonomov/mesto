@@ -163,13 +163,14 @@ function creatheCard(objCard) {
 // !popup Avatar
 const popupChangeAvatar = new PopupWithForm(handleSubmitAvatar, '#popup-avatar');
 
-function handleSubmitAvatar(data) {
+function handleSubmitAvatar() {
     ;
     popupChangeAvatar.statusloading(true);
     let linkAvatar = formAvatar.querySelector('#input-avatar').value;
-    api.changeAvatar(data.linkAvatar)
+    api.changeAvatar(linkAvatar)
         .then(() => {
-            popupChangeAvatar.closePopup(); 
+            popupChangeAvatar.closePopup();
+            userInfo.changeAvatarUser(linkAvatar);
         })
         .catch((error) => {
             console.log(error)
@@ -177,7 +178,6 @@ function handleSubmitAvatar(data) {
         .finally(() => {
             popupChangeAvatar.statusloading(false);
         })
-        userInfo.changeAvatarUser(linkAvatar);
 };
 
 //валидация формы avatar

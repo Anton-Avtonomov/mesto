@@ -99,12 +99,12 @@ export default class Api {
     }
 
     // Вложить данные о лайке на сервер
-    changeAvatar(dataUser) {
+    changeAvatar(linkAvatar) {
         return fetch(`${this._address}/users/me/avatar`, {
                 method: 'PATCH',
                 headers: this._headers,
                 body: JSON.stringify({
-                    avatar: dataUser.linkAvatar
+                    avatar: linkAvatar
                 })
             })
             .then(this._getRes)
