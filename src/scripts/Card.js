@@ -1,8 +1,8 @@
 export default class Card {
-    constructor(objNewCard, templateSelector, handleCardClick, handleDeleteClick, myId, methodAddLike, methodRemoveLike) {
+    constructor(objNewCard, templateSelector, handleCardClick, handleDeleteClick, userId, methodAddLike, methodRemoveLike) {
         this.idCard = objNewCard._id;
-        this.myId = myId;
-        this.userId = objNewCard.owner._id;
+        this.userId = userId;
+        this.cardId = objNewCard.owner._id;
         this._title = objNewCard.name;
         this._image = objNewCard.link;
         this._methodAddLike = methodAddLike;
@@ -20,6 +20,7 @@ export default class Card {
         // console.log('Создан экземпляр класса Card')
     }
 
+    //создание template элемента DOM карточки 
     _getTemplate() {
         const cardElement = document
             .querySelector(this._templateSelector)
@@ -31,76 +32,75 @@ export default class Card {
 
     }
 
-    _checkIdUser() {
-        this._changeLikeButton();
-        if (this.myId !== this.userId) {
-            this._buttonDelete.remove();
-        }
-    }
-
+    // Генерация карточки
     generateCard() {
         this._checkIdUser();
         this._cardImage.src = this._image;
         this._cardImage.alt = this._altImage;
         this._element.querySelector('.element__title').textContent = this._title;
-        // this._counterLikesCard.textContent = this._valueLikesCard.lenght;
         this._setEventListener();
         // console.log('Сработал метод класса Card - ГЕНЕРАЦИИ карточки');
         return this._element;
     }
 
-    _handleLike(event) {
-        if (this._buttonLike.classList.contains('element__logo-like_active')) {
-            this._methodRemoveLike();
+    // Проверка ID пользоватля(мой/чужой)
+    _checkIdUser() {
+        this._activeLike();
+        if (this.userId !== this.cardId) {
+            this._buttonDelete.remove();
         }
-        else {
-            this._methodAddLike();
-        }
-        // console.log('Сработал метод класса Card - LIKE');
     }
 
-    changeLikesArray(arrayLikes) {
-        this._valueLikesCard = arrayLikes;
-        this._changeLikeButton();
+    // Клик по лайку
+    _clickLike(event) {
+        if (this._buttonLike.classList.contains('element__logo-like_active')) {
+            this._methodRemoveLike();
+        } else {
+            this._methodAddLike();
+        }
     }
-    // !почитать про метод SOME
+
+    // Проверка на наличие лайка пользователя
     _checkMyLike() {
         return this._valueLikesCard.some((user) => {
-            return user._id === this.myId;
+            return user._id === this.userId;
         })
     }
 
-    _changeLikeButton() {
-        // if(this._checkMyLike()) {
-        //     this._buttonLike.classList.add('element__logo-like_active')
-        // }
-        // else {
-        //     this._buttonLike.classList.remove('element__logo-like_active') 
-        // }
-        // Запись через тернарный оператор
-        this._checkMyLike() 
-        ? this._buttonLike.classList.add('element__logo-like_active') 
-        : this._buttonLike.classList.remove('element__logo-like_active');
+    // Активация лайка
+    _activeLike() {
+        // Запись (If/Else) через тернарный оператор
+        this._checkMyLike() ?
+            this._buttonLike.classList.add('element__logo-like_active') :
+            this._buttonLike.classList.remove('element__logo-like_active');
         this._counterLikesCard.textContent = this._valueLikesCard.length;
-
-
     }
 
+    // 
+    loadingLikesArray(arrayLikes) {
+        this._valueLikesCard = arrayLikes;
+        this._activeLike();
+    }
+    // !почитать про метод SOME
+
+    // Удаление карточки из DOM
     _handleDelete(event) {
         this._element.remove();
         this._element = null;
         // console.log('Сработал метод класса Card - DELETE');
     }
 
+    // Открытие изоражения карточки
     _openPopupCard() {
         this._handleCardClick();
         // console.log('Сработал метод класса Card - openPopupCard');
     }
 
+    // Слушатели
     _setEventListener() {
         this._buttonLike.addEventListener('click', (event) => {
-            this._handleLike(event);
-            // умуте на вход идет по дефолту - можно не писать
+            this._clickLike(event);
+            // event на вход идет по дефолту - можно не писать
         });
         this._buttonDelete.addEventListener('click', () => {
             this._handleDeleteClick();
@@ -108,7 +108,6 @@ export default class Card {
         this._cardImage.addEventListener('click', () => {
             this._openPopupCard();
         });
-
         // console.log('Сработал метод класса Card - ДОБАВЛЕНИЯ СЛУШАТЕЛЕЙ');  
     }
 }

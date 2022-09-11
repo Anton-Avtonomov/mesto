@@ -2,11 +2,9 @@
 // Button adding card
 export const buttonOpenPopUpPlace = document.querySelector('.profile__button-add');
 // Button editing profile
-export const buttonEditPopUpProfile = document.querySelector('.profile__button-edit');
-// Имя профиля
-export const profileName = document.querySelector('.profile__name');
-// Инфо профиля
-export const profileInfo = document.querySelector('.profile__about-him');
+export const buttonOpenPopUpProfile = document.querySelector('.profile__button-edit');
+// Button change avatar
+export const buttonChangeAvatar = document.querySelector('.profile__button-edit-avatar');
 // Форма попапа профиля
 export const formProfile = document.querySelector('#form-profile');
 // Форма попапа профиля
