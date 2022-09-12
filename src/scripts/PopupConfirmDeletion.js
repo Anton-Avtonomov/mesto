@@ -1,7 +1,7 @@
 import Popup from "./Popup";
 
 export default class PopupConfirmDelete extends Popup {
-    constructor( popupSelector ) {
+    constructor(popupSelector) {
         super(popupSelector);
         this._form = this._popup.querySelector('.popup__form');
         this._buttonSubmit = this._form.querySelector('.popup__button-submit');
@@ -17,7 +17,7 @@ export default class PopupConfirmDelete extends Popup {
             this.closePopup();
         })
     }
-    
+
     // upgrade метода открытия PopUp
     openPopup(handleSubmit) {
         super.openPopup();

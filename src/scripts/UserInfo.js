@@ -1,28 +1,27 @@
 export default class UserInfo {
     constructor({
-        name,
-        info,
-        avatar
-    }) {
-        this._name = document.querySelector(name);
-        this._info = document.querySelector(info);
-        this._avatar = document.querySelector(avatar);
-        this._newUserName = document.querySelector('#input-name');
-        this._newUserInfo = document.querySelector('#input-about-him');
-    }
-    //возвращает объект с данными пользователя
+            name,
+            info,
+            avatar
+        }) {
+            this._name = document.querySelector(name);
+            this._info = document.querySelector(info);
+            this._avatar = document.querySelector(avatar);
+            this._newUserName = document.querySelector('#input-name');
+            this._newUserInfo = document.querySelector('#input-about-him');
+        }
+        //возвращает объект с данными пользователя
     getUserInfo() {
-        const userName = this._name.textContent;
-        const userInfo = this._info.textContent;
-        console.log(this._avatar);
-        const userAvatar = this._avatar.src;
-        return {
-            userName,
-            userInfo,
-            userAvatar
-        };
-    }
-    //принимает введённые данные
+            const userName = this._name.textContent;
+            const userInfo = this._info.textContent;
+            const userAvatar = this._avatar.src;
+            return {
+                userName,
+                userInfo,
+                userAvatar
+            };
+        }
+        //принимает введённые данные
     setUserInfo({
         name,
         about,
@@ -46,8 +45,8 @@ export default class UserInfo {
         this.userId = userId;
     }
 
-    // Замена аватара
-    changeAvatarUser(avatar) {
+    // Аватар пользователя
+    setAvatarUser(avatar) {
         this._avatar.src = avatar;
     }
 }

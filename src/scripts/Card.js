@@ -76,12 +76,12 @@ export default class Card {
         this._counterLikesCard.textContent = this._valueLikesCard.length;
     }
 
-    // 
+    // Отображение  лайков
     loadingLikesArray(arrayLikes) {
-        this._valueLikesCard = arrayLikes;
-        this._activeLike();
-    }
-    // !почитать про метод SOME
+            this._valueLikesCard = arrayLikes;
+            this._activeLike();
+        }
+        // !почитать про метод SOME
 
     // Удаление карточки из DOM
     _handleDelete(event) {

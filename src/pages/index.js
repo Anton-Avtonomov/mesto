@@ -86,7 +86,6 @@ function handleSubmitCard(objCard) {
     popupAddingCard.statusloading(true);
     api.addNewcard(objCard)
         .then((response) => {
-            console.log(response)
             rendererCard(response)
         })
         .catch((error) =>
@@ -126,14 +125,17 @@ function creatheCard(objCard) {
 
         // Функция handleDeleteClick - нажатие 
         () => {
-            popupConfirmDeletion.openPopup(() => {
-                api.deleteCard(newCard.idCard)
-                    .catch((error) => {
-                        console.log(error)
-                    });
-                newCard._handleDelete();
-            });
-            popupConfirmDeletion.setEventListeners();
+            popupConfirmDeletion.openPopup(
+                //Функция handleSubmitPopupConfirmDelete
+                () => {
+                    api.deleteCard(newCard.idCard)
+                        .then(() => {
+                            newCard._handleDelete();
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
+                })
         },
 
         userInfo.userId,
@@ -164,13 +166,12 @@ function creatheCard(objCard) {
 const popupChangeAvatar = new PopupWithForm(handleSubmitAvatar, '#popup-avatar');
 
 function handleSubmitAvatar() {
-    ;
     popupChangeAvatar.statusloading(true);
     let linkAvatar = formAvatar.querySelector('#input-avatar').value;
     api.changeAvatar(linkAvatar)
         .then(() => {
             popupChangeAvatar.closePopup();
-            userInfo.changeAvatarUser(linkAvatar);
+            userInfo.setAvatarUser(linkAvatar);
         })
         .catch((error) => {
             console.log(error)
@@ -223,11 +224,18 @@ const api = new Api({
 // Метод одновременного приёма данных сервера
 api.getDataServer()
     .then(([dataUser, cards]) => {
+        //Получение информации пользователя с сервера
         userInfo.setUserInfo(dataUser);
+        //Получение ID пользователя с сервера
         userInfo.setUserId(dataUser._id);
+        //Получение аватара пользователя с сервера
+        userInfo.setAvatarUser(dataUser.avatar);
+        //Загрузка-отрисовка карточек с сервера
         cardSection.rendererItems(cards);
-
     })
     .catch((error) => {
         console.log(error)
+    })
+    .finally(() => {
+        console.log('Запрос с сервера данных')
     })
