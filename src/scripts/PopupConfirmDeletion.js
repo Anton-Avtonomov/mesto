@@ -14,13 +14,13 @@ export default class PopupConfirmDelete extends Popup {
         this._form.addEventListener('submit', (event) => {
             event.preventDefault();
             this._handleSubmit();
-            this.closePopup();
+            this.close();
         })
     }
 
     // upgrade метода открытия PopUp
-    openPopup(handleSubmit) {
-        super.openPopup();
+    open(handleSubmit) {
+        super.open();
         this._handleSubmit = handleSubmit;
     }
 }

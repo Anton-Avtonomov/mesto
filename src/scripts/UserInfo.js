@@ -7,8 +7,6 @@ export default class UserInfo {
             this._name = document.querySelector(name);
             this._info = document.querySelector(info);
             this._avatar = document.querySelector(avatar);
-            this._newUserName = document.querySelector('#input-name');
-            this._newUserInfo = document.querySelector('#input-about-him');
         }
         //возвращает объект с данными пользователя
     getUserInfo() {
@@ -27,26 +25,22 @@ export default class UserInfo {
         about,
         avatar
     }) {
-        this._name.textContent = name;
-        this._info.textContent = about;
-        this._avatar.src = avatar;
+        // 1 вариант
+        if(name) {this._name.textContent = name} else {console.log('Отсутствует имя пользователя')};
+        // 2 вариант
+        about !== '' ? this._info.textContent = about : console.log('Отсутствует информация о пользователе');
+        // 3 вариант
+        avatar ? this._avatar.src = avatar : console.log('Отсутсвтует ссылка на аватар');
     }
 
-    // отображает в попапе значения из DOM
-    showDataUserInpopupProfile() {
-        const dataNewUser = this.getUserInfo();
-        this._newUserName.value = dataNewUser.userName;
-        this._newUserInfo.value = dataNewUser.userInfo;
-        // console.log('Данные юзера были изменены');
-    }
 
     // Массив лайков
     setUserId(userId) {
-        this.userId = userId;
+        userId ? this.userId = userId : console.log('Отсутствует ID');
     }
 
     // Аватар пользователя
     setAvatarUser(avatar) {
-        this._avatar.src = avatar;
+        avatar ? this._avatar.src = avatar : console.log('Отсутствует ссылка на аватар');
     }
 }

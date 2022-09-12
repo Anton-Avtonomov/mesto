@@ -1,8 +1,5 @@
 import '../pages/index.css';
 import Card from '../scripts/Card.js';
-// import {
-//     initialCardsPlace as defaultCards
-// } from '../scripts/initial-cards.js';
 import FormValidator from '../scripts/FormValidator.js';
 import UserInfo from '../scripts/UserInfo';
 import Section from '../scripts/Section.js';
@@ -15,17 +12,20 @@ import {
     formProfile,
     formPlace,
     formAvatar,
+    inputUserName,
+    inputUserInfo,
     config,
 } from '../utils/constants.js'
 import Api from '../scripts/Api';
 import PopupConfirmDelete from '../scripts/PopupConfirmDeletion';
 
 
-// Добавление карточки в DOM
-function rendererCard(obj) {
-    const cardElement = creatheCard(obj);
+// Добавление карточек в DOM
+function rendererCard(cardData) {
+    const cardElement = createCard(cardData);
     cardSection.addItem(cardElement)
 }
+
 // Экземпляр Section
 const cardSection = new Section(rendererCard, '.elements');
 
@@ -34,7 +34,7 @@ const cardSection = new Section(rendererCard, '.elements');
 const imagePopup = new PopupWithImage('#popup-card-place');
 imagePopup.setEventListeners();
 
-let userInfo = new UserInfo({
+const userInfo = new UserInfo({
     name: '.profile__name',
     info: '.profile__about-him',
     avatar: '.profile__avatar'
@@ -45,10 +45,10 @@ let userInfo = new UserInfo({
 const popupProfile = new PopupWithForm(handleSubmitProfile, '#popup-profile');
 
 //handleSubmit profile
-function handleSubmitProfile(objInputs) {
+function handleSubmitProfile(inputsValues) {
     const newUser = {
-        name: objInputs.userName,
-        about: objInputs.userInfo
+        name: inputsValues.userName,
+        about: inputsValues.userInfo
     };
     popupProfile.statusloading(true);
     api.editProfileUser(newUser)
@@ -70,11 +70,18 @@ profileFormValidator.enableValidation();
 // слушатели
 popupProfile.setEventListeners();
 
+// Обновление данных юзера в попапе profile
+function updateUserInfo() {
+    const dataNewUser = userInfo.getUserInfo();
+    inputUserName.value = dataNewUser.userName;
+    inputUserInfo.value = dataNewUser.userInfo;
+}
+
 // кнопка открытия
 buttonEditProfile.addEventListener('click', () => {
     profileFormValidator.resetValidation();
-    userInfo.showDataUserInpopupProfile();
-    popupProfile.openPopup();
+    updateUserInfo();
+    popupProfile.open();
 })
 
 
@@ -82,9 +89,9 @@ buttonEditProfile.addEventListener('click', () => {
 const popupAddingCard = new PopupWithForm(handleSubmitCard, '#popup-place');
 
 //handleSubmit popup ADDING card
-function handleSubmitCard(objCard) {
+function handleSubmitCard(cardData) {
     popupAddingCard.statusloading(true);
-    api.addNewcard(objCard)
+    api.addNewcard(cardData)
         .then((response) => {
             rendererCard(response)
         })
@@ -105,27 +112,27 @@ popupAddingCard.setEventListeners();
 // кнопка открытия 
 buttonAddingCard.addEventListener('click', () => {
     cardFormValidator.resetValidation();
-    popupAddingCard.openPopup();
+    popupAddingCard.open();
 });
 
 
 //создание новой карточки
-function creatheCard(objCard) {
-    const newCard = new Card(objCard,
+function createCard(cardData) {
+    const newCard = new Card(cardData,
 
         '#template-card-place',
 
         // Функция handleCardClick - открытие изображения карточки
         () => {
-            imagePopup.openPopup({
-                name: objCard.name,
-                link: objCard.link
-            }, )
+            imagePopup.open({
+                name: cardData.name,
+                link: cardData.link
+            },)
         },
 
         // Функция handleDeleteClick - нажатие 
         () => {
-            popupConfirmDeletion.openPopup(
+            popupConfirmDeletion.open(
                 //Функция handleSubmitPopupConfirmDelete
                 () => {
                     api.deleteCard(newCard.idCard)
@@ -147,6 +154,9 @@ function creatheCard(objCard) {
                     newCard.loadingLikesArray(response.likes);
                     // console.log('Добавление',response);
                 })
+                .catch((error) => {
+                    console.log(error)
+                })
         },
 
         // метод remove Like
@@ -155,6 +165,9 @@ function creatheCard(objCard) {
                 .then((response) => {
                     newCard.loadingLikesArray(response.likes);
                     // console.log('Удаление',response);
+                })
+                .catch((error) => {
+                    console.log(error)
                 })
         }
     );
@@ -167,11 +180,11 @@ const popupChangeAvatar = new PopupWithForm(handleSubmitAvatar, '#popup-avatar')
 
 function handleSubmitAvatar() {
     popupChangeAvatar.statusloading(true);
-    let linkAvatar = formAvatar.querySelector('#input-avatar').value;
-    api.changeAvatar(linkAvatar)
+    const inputAvatarData = popupChangeAvatar.getInputValues();
+    api.changeAvatar(inputAvatarData.linkAvatar)
         .then(() => {
-            popupChangeAvatar.closePopup();
-            userInfo.setAvatarUser(linkAvatar);
+            popupChangeAvatar.close();
+            userInfo.setAvatarUser(inputAvatarData.linkAvatar);
         })
         .catch((error) => {
             console.log(error)
@@ -184,12 +197,12 @@ function handleSubmitAvatar() {
 //валидация формы avatar
 const avatarFormValidator = new FormValidator(config, formAvatar);
 avatarFormValidator.enableValidation();
+popupChangeAvatar.setEventListeners();
 
 // Кнопка открытия
 buttonChangeAvatar.addEventListener('click', () => {
     avatarFormValidator.resetValidation();
-    popupChangeAvatar.openPopup();
-    popupChangeAvatar.setEventListeners();
+    popupChangeAvatar.open();
 });
 
 
@@ -230,8 +243,11 @@ api.getDataServer()
         userInfo.setUserId(dataUser._id);
         //Получение аватара пользователя с сервера
         userInfo.setAvatarUser(dataUser.avatar);
+        // Разворот порядка массива карточек
+        const reverseArray = cards.reverse();
         //Загрузка-отрисовка карточек с сервера
-        cardSection.rendererItems(cards);
+        cardSection.rendererItems(reverseArray);
+
     })
     .catch((error) => {
         console.log(error)

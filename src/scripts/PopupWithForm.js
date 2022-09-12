@@ -19,9 +19,10 @@ export default class PopupWithForm extends Popup {
         // console.log('Сработал метод класса PopupWithForm - getInputValues!');
         return this._inputValues;
     }
-    closePopup() {
+    
+    close() {
         this._popupForm.reset();
-        super.closePopup();
+        super.close();
         // console.log('Сработал метод класса PopupWithForm - closePopup!');
     }
 
@@ -30,7 +31,7 @@ export default class PopupWithForm extends Popup {
         this._popupForm.addEventListener('submit', (event) => {
             event.preventDefault();
             this._handleSubmit(this.getInputValues());
-            this.closePopup();
+            this.close();
             // console.log('Сработал метод класса PopupWithForm - setEventListenerss!');
         })
     }

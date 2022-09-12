@@ -8,12 +8,12 @@ export default class PopupWithImage extends Popup {
         this._title = this._popup.querySelector('.popup__image-title');
         // console.log('Создан экземпляр класса PopupWithImage');
     }
-    openPopup({link, title}) {
+    open({link, title}) {
+        super.open();
         this._photo.src = link;
         this._photo.alt = `Фотография ${title}`;
         this._title.textContent = title;
         this._contentPopup.classList.add('popup__container_theme_dark');
-        super.openPopup();
         // console.log('Сработал метод класса PopupWithImage - openPopup!');
     }
 }

@@ -11,6 +11,10 @@ export const formProfile = document.querySelector('#form-profile');
 export const formPlace = document.querySelector('#form-card-place');
 // Форма попапа аватара
 export const formAvatar = document.querySelector('#form-avatar');
+// Имя пользователя
+export const inputUserName = document.querySelector('#input-name');
+// Информация о пользователе
+export const inputUserInfo = document.querySelector('#input-about-him');
 // Объект с селекторами для валидации
 export const config = {
     // Селектор формы

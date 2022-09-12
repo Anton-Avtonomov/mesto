@@ -16,5 +16,4 @@ export default class Section {
         this._container.prepend(element);
         // console.log('Сработал метод класса Section - addItem!');
     }
-
 }
