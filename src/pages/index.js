@@ -236,6 +236,3 @@ api.getDataServer()
     .catch((error) => {
         console.log(error)
     })
-    .finally(() => {
-        console.log('Запрос с сервера данных')
-    })

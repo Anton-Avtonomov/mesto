@@ -9,6 +9,7 @@
     transition: opacity .4s ease-in-out;
     opacity: 0;
     cursor: pointer;
+    border: none;
 }
 
 .profile__button-edit-avatar:hover {
