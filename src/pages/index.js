@@ -127,7 +127,7 @@ function createCard(cardData) {
             imagePopup.open({
                 name: cardData.name,
                 link: cardData.link
-            },)
+            })
         },
 
         // Функция handleDeleteClick - нажатие 
@@ -178,9 +178,9 @@ function createCard(cardData) {
 // !popup Avatar
 const popupChangeAvatar = new PopupWithForm(handleSubmitAvatar, '#popup-avatar');
 
-function handleSubmitAvatar() {
+// !Функция сабмита по дефолту на вход получает данные из инпутов формы
+function handleSubmitAvatar(inputAvatarData) {
     popupChangeAvatar.statusloading(true);
-    const inputAvatarData = popupChangeAvatar.getInputValues();
     api.changeAvatar(inputAvatarData.linkAvatar)
         .then(() => {
             popupChangeAvatar.close();
